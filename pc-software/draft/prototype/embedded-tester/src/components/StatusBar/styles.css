@@ -1,0 +1,7 @@
+.status-bar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    border: 1px solid black;
+}
+
