@@ -1,23 +1,34 @@
+// Generic imports
 import React, { Component } from 'react';
+
+// Import all components
 import StatusBar from '../StatusBar';
+import DeviceArea from '../DeviceArea';
+
+// Styling
 import './styles.css';
 
 class App extends Component {
 
-  state = {
-      modules: [1, 2, 5, 8]
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      connectionStatus: 'connected',
+      moduleIDs: [1, 2, 5, 8],
+      moduleTypes: ['GPIO', 'ADC']
+    };
   }
 
-    
   render() {
     return (
-      <div className="App">
-          <h1 className="App-title">Embedded Tester</h1>
+      <div className="application">
         <StatusBar 
-            connectionStatus = 'connected'
-            connectedDevicesIDs = {this.state.modules}
+            connectionStatus = {this.state.connectionStatus}
+            connectedDevicesIDs = {this.state.moduleIDs}
         />
-      </div>
+        <DeviceArea />
+      </div>    
     );
   }
 }
