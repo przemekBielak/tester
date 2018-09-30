@@ -6,8 +6,14 @@ import './styles.css'
 const Device = (props) => (
     <div className='device'>
         <DeviceHeading deviceName={props.deviceName}/>
-        <Module moduleName='GPIO'/>
-        <Module moduleName='ADC'/>
+        <Module 
+            moduleName='GPIO'
+            numOfLines={10} 
+        />
+        <Module 
+            moduleName='ADC'
+            numOfLines={5}
+        />
     </div>
 );
 
