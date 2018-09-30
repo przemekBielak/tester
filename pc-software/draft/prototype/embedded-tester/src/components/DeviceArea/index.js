@@ -6,6 +6,8 @@ const DeviceArea = (props) => (
     <div className='device-area'>
         <Device deviceName='Main Device'/>
         <Device deviceName='Extention Device 1'/>
+        <Device deviceName='Extention Device 2'/>
+        <Device deviceName='Extention Device 3'/>
     </div>
 );
 
