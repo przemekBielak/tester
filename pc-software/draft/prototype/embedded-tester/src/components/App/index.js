@@ -6,7 +6,28 @@ import StatusBar from '../StatusBar';
 import DeviceArea from '../DeviceArea';
 
 // Styling
-import './styles.css';
+import styled from 'styled-components';
+import styledNormalize from 'styled-normalize';
+import { injectGlobal } from 'styled-components'
+
+injectGlobal`
+  ${styledNormalize}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: sans-serif;
+  }
+`
+
+const ApplicationWrapper = styled.div `
+  padding: 5px;
+  border: 1px solid black;
+`
+
 
 class App extends Component {
 
@@ -22,13 +43,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="application">
+      <ApplicationWrapper>
         <StatusBar 
             connectionStatus = {this.state.connectionStatus}
             connectedDevicesIDs = {this.state.moduleIDs}
         />
         <DeviceArea />
-      </div>    
+      </ApplicationWrapper>    
     );
   }
 }

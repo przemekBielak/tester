@@ -1,25 +1,40 @@
-import React from 'react'
+import React from 'react';
 import ModuleHeading from '../ModuleHeading';
-import ModuleLine from '../ModuleLine';
-import './styles.css'
+import ModuleLineADC from '../ModuleLineADC';
+import ModuleLineGPIO from '../ModuleLineGPIO';
+import styled from 'styled-components';
 
-function createModuleLineList(numOfLines, lineType) {
+const ModuleWrapper = styled.div `
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: solid 1px black;
+`;
+
+// Create ModuleLine components
+const createModuleLineList = (numOfLines, lineType) => {
     let table = []
 
     for (let i = 0; i < numOfLines; i++) {
-      table.push(<ModuleLine 
-        moduleLineType={lineType}
-        moduleLineNumber={i}/>);
+        if(lineType === 'GPIO') {
+            table.push(<ModuleLineGPIO 
+                moduleLineType={lineType}
+                moduleLineNumber={i}/>);
+        }
+        else if (lineType === 'ADC') {
+            table.push(<ModuleLineADC 
+                moduleLineType={lineType}
+                moduleLineNumber={i}/>);
+        }
     }
-    return table
+    return table;
 }
 
 const Module = (props) => (
-    <div className='module'>
+    <ModuleWrapper>
         <ModuleHeading moduleName={props.moduleName}/>
 
         {createModuleLineList(props.numOfLines, props.moduleName)}
-    </div>
+    </ModuleWrapper>
 );
 
 export default Module;

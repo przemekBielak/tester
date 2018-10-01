@@ -1,11 +1,17 @@
-import React from 'react'
-import './styles.css'
+import React from 'react';
+import styled from 'styled-components';
+
+const ModuleHeadingWrapper = styled.div `
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid blue;
+`;
 
 const ModuleHeading = (props) => (
-    <div className='module-heading'>
+    <ModuleHeadingWrapper>
         <h2>{props.moduleName}</h2>
         <button type='button'>Settings</button>
-    </div>
+    </ModuleHeadingWrapper>
 );
 
 export default ModuleHeading;

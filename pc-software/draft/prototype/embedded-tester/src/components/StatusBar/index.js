@@ -1,14 +1,21 @@
-import React from 'react'
-import './styles.css'
+import React from 'react';
+import styled from 'styled-components';
+
+const StatusBarWrapper = styled.div `
+    width: 100%;
+    display: flex;
+    justify-content: flex-between;
+    border: 1px solid black;
+`
 
 const StatusBar = (props) => (
-    <div className='status-bar'>
-        <h1 clasclassNames='status-bar-status'>Status: </h1>
-        <h1 className='status-bar-status-value'>{props.connectionStatus}</h1>
+    <StatusBarWrapper>
+        <h1>Status: </h1>
+        <h1>{props.connectionStatus}</h1>
 
         <h1>Connected devices: </h1>
         <h1>{props.connectedDevicesIDs}</h1>
-    </div>
+    </StatusBarWrapper>
 );
 
 export default StatusBar;

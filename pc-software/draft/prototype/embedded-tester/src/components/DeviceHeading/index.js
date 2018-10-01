@@ -1,10 +1,9 @@
-import React from 'react'
-import './styles.css'
+import React from 'react';
 
-const Module = (props) => (
+const DeviceHeading = (props) => (
     <div>
-        <h2 className='device-heading'>{props.deviceName}</h2>
+        <h2>{props.deviceName}</h2>
     </div>
 );
 
-export default Module;
+export default DeviceHeading;
