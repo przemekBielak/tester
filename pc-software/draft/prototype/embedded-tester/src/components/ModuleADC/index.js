@@ -25,7 +25,7 @@ const createADClines = (numOfLines) => {
 
     for (let i = 0; i < numOfLines; i++) {
         table.push(
-            <ModuleLineWrapper>
+            <ModuleLineWrapper key={i}>
                 <ModuleLineNumberWrapper>{i}.</ModuleLineNumberWrapper>
                 <ModuleLineNumberWrapper>3.1415</ModuleLineNumberWrapper>
             </ModuleLineWrapper>

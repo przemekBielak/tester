@@ -9,10 +9,10 @@ const DeviceAreaWrapper = styled.div `
 
 const DeviceArea = (props) => (
     <DeviceAreaWrapper>
-        <Device deviceName='Main Device'/>
-        <Device deviceName='Extention Device 1'/>
-        <Device deviceName='Extention Device 2'/>
-        <Device deviceName='Extention Device 3'/>
+        <Device deviceName='Main Device' key='main'/>
+        <Device deviceName='Extention Device 1' key='ext1'/>
+        <Device deviceName='Extention Device 2' key='ext2'/>
+        <Device deviceName='Extention Device 3' key='ext3'/>
     </DeviceAreaWrapper>
 );
 

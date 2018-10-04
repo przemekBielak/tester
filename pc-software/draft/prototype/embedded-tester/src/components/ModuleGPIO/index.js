@@ -30,7 +30,7 @@ const createGPIOlines = (numOfLines) => {
 
     for (let i = 0; i < numOfLines; i++) {
         table.push(
-            <ModuleLineWrapper>
+            <ModuleLineWrapper key={i}>
                 <ModuleLineBeginningWrapper>
                     <ModuleLineNumberWrapper>{i}.</ModuleLineNumberWrapper>
                     <button type='button'>IN/OUT</button>

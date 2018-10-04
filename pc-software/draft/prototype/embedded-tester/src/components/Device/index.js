@@ -9,16 +9,51 @@ const DeviceWrapper = styled.div `
     border: 1px solid red;
 `;
 
+const createDevice = (deviceName) => {
+    let table = [];
+
+    if (deviceName === 'Main Device') {
+        table.push(
+            <div key={deviceName}>
+                <ModuleGPIO numOfLines={15} />
+                <ModuleADC numOfLines={10} />
+            </div>
+        );
+    }
+    else if (deviceName === 'Extention Device 1') {
+        table.push(
+            <div key={deviceName}>
+                <ModuleGPIO numOfLines={10} />
+                <ModuleADC numOfLines={5} />
+            </div>
+        );
+    }
+    else if (deviceName === 'Extention Device 2') {
+        table.push(
+            <div key={deviceName}>
+                <ModuleADC numOfLines={10} />
+            </div>
+        );
+    }
+    else if (deviceName === 'Extention Device 3') {
+        table.push(
+            <div key={deviceName}>
+                <ModuleGPIO numOfLines={14} />
+            </div>
+        );
+    }
+    else {
+        console.log(`Device name "${deviceName}" is not supported`);
+    }
+
+    return table;
+};
+
+
 const Device = (props) => (
     <DeviceWrapper>
         <h2>{props.deviceName}</h2>
-        
-        <ModuleGPIO
-            numOfLines={15} 
-        />
-        <ModuleADC
-            numOfLines={10}
-        />
+        {createDevice(props.deviceName)}
     </DeviceWrapper>
 );
 
