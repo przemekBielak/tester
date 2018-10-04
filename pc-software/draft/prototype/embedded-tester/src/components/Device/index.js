@@ -1,6 +1,6 @@
 import React from 'react';
-import DeviceHeading from '../DeviceHeading';
-import Module from '../Module';
+import ModuleADC from '../ModuleADC';
+import ModuleGPIO from '../ModuleGPIO';
 import styled from 'styled-components';
 
 const DeviceWrapper = styled.div `
@@ -11,14 +11,13 @@ const DeviceWrapper = styled.div `
 
 const Device = (props) => (
     <DeviceWrapper>
-        <DeviceHeading deviceName={props.deviceName}/>
-        <Module 
-            moduleName='GPIO'
-            numOfLines={10} 
+        <h2>{props.deviceName}</h2>
+        
+        <ModuleGPIO
+            numOfLines={15} 
         />
-        <Module 
-            moduleName='ADC'
-            numOfLines={5}
+        <ModuleADC
+            numOfLines={10}
         />
     </DeviceWrapper>
 );
