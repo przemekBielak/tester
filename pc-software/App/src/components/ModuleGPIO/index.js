@@ -32,13 +32,37 @@ const ModuleLineInput = styled.input `
     width: 35px;
 `;
 
+const ModuleHeadingWrapper = styled.div `
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid blue;
+`;
+
+const SettingsOverlay = styled.div `
+    position: fixed; 
+    display: block; 
+    width: 100%; 
+    height: 100%; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); 
+    z-index: 2; 
+    cursor: pointer;
+`;
+
 // Type definitions
+
+const GPIOValEnum = {
+    LOW: 0,
+    HIGH: 1,
+}
 
 const GPIOTypeEnum = {
     IN: 0,
     OUT: 1,
 };
-
 
 class ModuleGPIO extends Component {
     constructor(props) {
@@ -60,8 +84,26 @@ class ModuleGPIO extends Component {
                 GPIOTypeEnum.IN,
                 GPIOTypeEnum.IN,
                 GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN
+                GPIOTypeEnum.IN,
             ],
+            GPIOVal: [
+                GPIOValEnum.LOW,
+                GPIOValEnum.HIGH,
+                GPIOValEnum.HIGH,
+                GPIOValEnum.LOW,
+                GPIOValEnum.HIGH,
+                GPIOValEnum.HIGH,
+                GPIOValEnum.LOW,
+                GPIOValEnum.LOW,
+                GPIOValEnum.HIGH,
+                GPIOValEnum.HIGH,
+                GPIOValEnum.LOW,
+                GPIOValEnum.LOW,
+                GPIOValEnum.LOW,
+                GPIOValEnum.LOW,
+                GPIOValEnum.LOW,
+            ],
+            settingsActive: 0,
         };
 
         this.handleGPIOType = this.handleGPIOType.bind(this);
@@ -71,13 +113,13 @@ class ModuleGPIO extends Component {
         return Object.keys(object).find(key => object[key] === value);
     }
 
-    createGPIOLineData = (GPIOnum) => {
-        if(this.state.GPIOType[GPIOnum] === GPIOTypeEnum.IN) {
+    createGPIOLineData = (GPIONum) => {
+        if(this.state.GPIOType[GPIONum] === GPIOTypeEnum.IN) {
             return (
-                <p>LOW</p>
+                <p>{this.getKeyByValue(GPIOValEnum, this.state.GPIOVal[GPIONum])}</p>
             );
         }
-        else if(this.state.GPIOType[GPIOnum] === GPIOTypeEnum.OUT) {
+        else if(this.state.GPIOType[GPIONum] === GPIOTypeEnum.OUT) {
             return (
                 <ModuleLineInput type='text'/>
             );
@@ -104,6 +146,21 @@ class ModuleGPIO extends Component {
         return table;
     }
 
+    createSettingsOverlay = () => {
+        if(this.state.settingsActive === 0) {
+            // return();
+        }
+        else if(this.state.settingsActive === 1) {
+            return (
+                <SettingsOverlay>
+                    <button type='button' onClick={
+                        () => this.handleHideSettings()
+                    }>X</button>
+                </SettingsOverlay>
+            );
+        }
+    }
+
     handleGPIOType(GPIOnum) {
         let GPIOType = [...this.state.GPIOType];  
 
@@ -114,16 +171,32 @@ class ModuleGPIO extends Component {
             GPIOType[GPIOnum] = GPIOTypeEnum.IN;
         }
         this.setState({GPIOType: GPIOType,});
+    }
 
-        console.log(this.state.GPIOType);
+    handleShowSettings() {
+        console.log(this.state.settingsActive);
+        this.setState({settingsActive: 1});
+    }
+
+    handleHideSettings() {
+        console.log(this.state.settingsActive);
+        this.setState({settingsActive: 0});
     }
 
     render() {
         return (
             <ModuleWrapper>
-            <ModuleHeading moduleName = 'GPIO'/>
+                <ModuleHeadingWrapper>
+                    <h2>GPIO</h2>
+                    <button type='button' onClick={
+                        () => this.handleShowSettings()
+                    }>Settings</button>
+                </ModuleHeadingWrapper>
 
-            {this.createGPIOlines(this.props.numOfLines)}
+                {this.createGPIOlines(this.props.numOfLines)}
+
+                {/* Setting overlay view */}
+                {this.createSettingsOverlay()}
             </ModuleWrapper>
         );
     }

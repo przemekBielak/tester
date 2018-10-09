@@ -10,6 +10,8 @@ import styled from 'styled-components';
 import styledNormalize from 'styled-normalize';
 import { injectGlobal } from 'styled-components'
 
+const myaddon = require('../native.node');
+
 injectGlobal`
   ${styledNormalize}
   * {
@@ -33,6 +35,9 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    console.log('haha');
+    // console.log(myaddon.hello()); // 'world'
+
 
     this.state = {
       connectionStatus: 'connected',
@@ -51,6 +56,7 @@ class App extends Component {
         <DeviceArea />
         <h2>is it below?</h2>
       </ApplicationWrapper>    
+
     );
   }
 }
