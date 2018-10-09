@@ -41,16 +41,32 @@ const ModuleHeadingWrapper = styled.div `
 const SettingsOverlay = styled.div `
     position: fixed; 
     display: block; 
-    width: 100%; 
-    height: 100%; 
+    margin: auto auto;
+    padding: 10px 10px;
+    width: 500px; 
+    height: auto; 
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5); 
-    z-index: 2; 
-    cursor: pointer;
+    border: 3px solid green; 
+    z-index: 1; 
 `;
+
+const SettingsOverlayContent = styled.div `
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border: 3px solid purple; 
+`;
+
+const SettingsOverlayHeader = styled.div `
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid blue;
+`;
+
 
 // Type definitions
 
@@ -146,6 +162,23 @@ class ModuleGPIO extends Component {
         return table;
     }
 
+    createSettingslines = (numOfLines) => {
+        let table = []
+
+        for (let i = 0; i < numOfLines; i++) {
+            table.push(
+                <ModuleLineWrapper key={i}>
+                    <ModuleLineBeginningWrapper>
+                        <ModuleLineNumberWrapper>{i}.</ModuleLineNumberWrapper>
+                    </ModuleLineBeginningWrapper>
+                    <button type='button'>pull-up/pull-down</button>
+                    <button type='button'>3.3V/5V</button>
+                </ModuleLineWrapper>
+            );
+        }
+        return table;
+    }
+
     createSettingsOverlay = () => {
         if(this.state.settingsActive === 0) {
             // return();
@@ -153,9 +186,15 @@ class ModuleGPIO extends Component {
         else if(this.state.settingsActive === 1) {
             return (
                 <SettingsOverlay>
-                    <button type='button' onClick={
-                        () => this.handleHideSettings()
-                    }>X</button>
+                    <SettingsOverlayContent>
+                        <SettingsOverlayHeader>
+                            <h2>GPIO Settings</h2>
+                            <button type='button' onClick={
+                                () => this.handleHideSettings()
+                            }>Close</button>
+                        </SettingsOverlayHeader>
+                        {this.createSettingslines(this.props.numOfLines)}
+                    </SettingsOverlayContent>
                 </SettingsOverlay>
             );
         }
