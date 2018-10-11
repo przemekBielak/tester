@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ModuleHeading from '../ModuleHeading';
+import GPIOItem from'./GPIOItem';
 import styled from 'styled-components';
 
 // Styling
@@ -25,10 +25,6 @@ const ModuleLineBeginningWrapper = styled.div `
 `;
 
 const ModuleLineNumberWrapper = styled.p `
-    width: 35px;
-`;
-
-const ModuleLineInput = styled.input `
     width: 35px;
 `;
 
@@ -67,96 +63,21 @@ const SettingsOverlayHeader = styled.div `
     border: 1px solid blue;
 `;
 
-
-// Type definitions
-
-const GPIOValEnum = {
-    LOW: 0,
-    HIGH: 1,
-}
-
-const GPIOTypeEnum = {
-    IN: 0,
-    OUT: 1,
-};
-
 class ModuleGPIO extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            GPIOType: [
-                GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN,
-                GPIOTypeEnum.IN,
-            ],
-            GPIOVal: [
-                GPIOValEnum.LOW,
-                GPIOValEnum.HIGH,
-                GPIOValEnum.HIGH,
-                GPIOValEnum.LOW,
-                GPIOValEnum.HIGH,
-                GPIOValEnum.HIGH,
-                GPIOValEnum.LOW,
-                GPIOValEnum.LOW,
-                GPIOValEnum.HIGH,
-                GPIOValEnum.HIGH,
-                GPIOValEnum.LOW,
-                GPIOValEnum.LOW,
-                GPIOValEnum.LOW,
-                GPIOValEnum.LOW,
-                GPIOValEnum.LOW,
-            ],
             settingsActive: 0,
         };
-
-        this.handleGPIOType = this.handleGPIOType.bind(this);
     }
 
-    getKeyByValue(object, value) {
-        return Object.keys(object).find(key => object[key] === value);
-    }
-
-    createGPIOLineData = (GPIONum) => {
-        if(this.state.GPIOType[GPIONum] === GPIOTypeEnum.IN) {
-            return (
-                <p>{this.getKeyByValue(GPIOValEnum, this.state.GPIOVal[GPIONum])}</p>
-            );
-        }
-        else if(this.state.GPIOType[GPIONum] === GPIOTypeEnum.OUT) {
-            return (
-                <ModuleLineInput type='text'/>
-            );
-        }
-    }
-
-    createGPIOlines = (numOfLines) => {
+    createGPIOitems = (numOfLines) => {
         let table = []
 
         for (let i = 0; i < numOfLines; i++) {
             table.push(
-                <ModuleLineWrapper key={i}>
-                    <ModuleLineBeginningWrapper>
-                        <ModuleLineNumberWrapper>{i}.</ModuleLineNumberWrapper>
-                        <button type='button' onClick={
-                            () => this.handleGPIOType(i)}>
-                            {this.getKeyByValue(GPIOTypeEnum, this.state.GPIOType[i])}
-                        </button>
-                    </ModuleLineBeginningWrapper>
-                    {this.createGPIOLineData(i)}
-                </ModuleLineWrapper>
+                <GPIOItem moduleID='1' itemID={i} key={i}/>
             );
         }
         return table;
@@ -200,25 +121,11 @@ class ModuleGPIO extends Component {
         }
     }
 
-    handleGPIOType(GPIOnum) {
-        let GPIOType = [...this.state.GPIOType];  
-
-        if(this.state.GPIOType[GPIOnum] === GPIOTypeEnum.IN) {
-            GPIOType[GPIOnum] = GPIOTypeEnum.OUT;
-        }
-        else {
-            GPIOType[GPIOnum] = GPIOTypeEnum.IN;
-        }
-        this.setState({GPIOType: GPIOType,});
-    }
-
     handleShowSettings() {
-        console.log(this.state.settingsActive);
         this.setState({settingsActive: 1});
     }
 
     handleHideSettings() {
-        console.log(this.state.settingsActive);
         this.setState({settingsActive: 0});
     }
 
@@ -232,7 +139,7 @@ class ModuleGPIO extends Component {
                     }>Settings</button>
                 </ModuleHeadingWrapper>
 
-                {this.createGPIOlines(this.props.numOfLines)}
+                {this.createGPIOitems(this.props.numOfLines)}
 
                 {/* Setting overlay view */}
                 {this.createSettingsOverlay()}

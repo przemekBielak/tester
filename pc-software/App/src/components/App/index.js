@@ -35,9 +35,6 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    console.log('haha');
-    // console.log(myaddon.hello()); // 'world'
-
 
     this.state = {
       connectionStatus: 'connected',
