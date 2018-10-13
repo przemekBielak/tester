@@ -8,14 +8,16 @@ const StatusBarWrapper = styled.div `
     border: 1px solid black;
 `
 
-const StatusBar = (props) => (
-    <StatusBarWrapper>
-        <h1>Status: </h1>
-        <h1>{props.connectionStatus}</h1>
+function StatusBar(props) {
+    return(
+        <StatusBarWrapper>
+            <h1>Status: </h1>
+            <h1>{props.connectionStatus}</h1>
 
-        <h1>Connected devices: </h1>
-        <h1>{props.connectedDevicesIDs}</h1>
-    </StatusBarWrapper>
-);
+            <h1>Connected devices: </h1>
+            <h1>{props.connectedDevicesIDs}</h1>
+        </StatusBarWrapper>
+    );
+};
 
 export default StatusBar;

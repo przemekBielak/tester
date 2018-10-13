@@ -50,7 +50,7 @@ class GPIOItem extends Component {
         return Object.keys(object).find(key => object[key] === value);
     }
 
-    createItemData = () => {
+    createItemData() {
         if(this.state.Type === TypeEnum.IN) {
             return (
                 <p>{this.getKeyByValue(ValEnum, this.state.Val)}</p>
@@ -77,8 +77,10 @@ class GPIOItem extends Component {
             <ItemWrapper>
                 <ItemBeginningWrapper>
                     <ItemIDWrapper>{this.props.itemID}.</ItemIDWrapper>
-                    <button type='button' onClick={
-                        () => this.handleType()}>
+                    <button 
+                        type='button' 
+                        onClick={() => this.handleType()}
+                    >
                         {this.getKeyByValue(TypeEnum, this.state.Type)}
                     </button>
                 </ItemBeginningWrapper>

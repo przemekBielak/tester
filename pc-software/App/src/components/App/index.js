@@ -10,8 +10,6 @@ import styled from 'styled-components';
 import styledNormalize from 'styled-normalize';
 import { injectGlobal } from 'styled-components'
 
-const myaddon = require('../native.node');
-
 injectGlobal`
   ${styledNormalize}
   * {

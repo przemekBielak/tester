@@ -20,7 +20,7 @@ const ModuleLineNumberWrapper = styled.p `
 `;
 
 // Create ADC lines
-const createADClines = (numOfLines) => {
+function createADClines(numOfLines) {
     let table = []
 
     for (let i = 0; i < numOfLines; i++) {
@@ -34,12 +34,14 @@ const createADClines = (numOfLines) => {
     return table;
 }
 
-const ModuleADC = (props) => (
-    <ModuleWrapper>
-        <ModuleHeading moduleName = 'ADC'/>
+function ModuleADC(props) {
+    return(
+        <ModuleWrapper>
+            <ModuleHeading moduleName = 'ADC'/>
+            {createADClines(props.numOfLines)}
+        </ModuleWrapper>
+    );
+};
 
-        {createADClines(props.numOfLines)}
-    </ModuleWrapper>
-);
 
 export default ModuleADC;

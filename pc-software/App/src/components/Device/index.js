@@ -9,7 +9,7 @@ const DeviceWrapper = styled.div `
     border: 1px solid red;
 `;
 
-const createDevice = (deviceName) => {
+function createDevice(deviceName) {
     let table = [];
 
     if (deviceName === 'Main Device') {
@@ -50,11 +50,13 @@ const createDevice = (deviceName) => {
 };
 
 
-const Device = (props) => (
-    <DeviceWrapper>
-        <h2>{props.deviceName}</h2>
-        {createDevice(props.deviceName)}
-    </DeviceWrapper>
-);
+function Device(props) {
+    return (
+        <DeviceWrapper>
+            <h2>{props.deviceName}</h2>
+            {createDevice(props.deviceName)}
+        </DeviceWrapper>
+    )
+};
 
 export default Device;

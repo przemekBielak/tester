@@ -7,11 +7,13 @@ const ModuleHeadingWrapper = styled.div `
     border: 1px solid blue;
 `;
 
-const ModuleHeading = (props) => (
-    <ModuleHeadingWrapper>
-        <h2>{props.moduleName}</h2>
-        <button type='button'>Settings</button>
-    </ModuleHeadingWrapper>
-);
+function  ModuleHeading(props) {
+    return(
+        <ModuleHeadingWrapper>
+            <h2>{props.moduleName}</h2>
+            <button type='button'>Settings</button>
+        </ModuleHeadingWrapper>
+    );
+};
 
 export default ModuleHeading;

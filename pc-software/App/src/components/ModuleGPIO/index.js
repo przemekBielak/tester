@@ -72,7 +72,7 @@ class ModuleGPIO extends Component {
         };
     }
 
-    createGPIOitems = (numOfLines) => {
+    createGPIOItems(numOfLines) {
         let table = []
 
         for (let i = 0; i < numOfLines; i++) {
@@ -83,7 +83,7 @@ class ModuleGPIO extends Component {
         return table;
     }
 
-    createSettingslines = (numOfLines) => {
+    createSettingslines(numOfLines) {
         let table = []
 
         for (let i = 0; i < numOfLines; i++) {
@@ -100,7 +100,7 @@ class ModuleGPIO extends Component {
         return table;
     }
 
-    createSettingsOverlay = () => {
+    createSettingsOverlay() {
         if(this.state.settingsActive === 0) {
             // return();
         }
@@ -134,12 +134,15 @@ class ModuleGPIO extends Component {
             <ModuleWrapper>
                 <ModuleHeadingWrapper>
                     <h2>GPIO</h2>
-                    <button type='button' onClick={
-                        () => this.handleShowSettings()
-                    }>Settings</button>
+                    <button 
+                        type='button' 
+                        onClick={() => this.handleShowSettings()}
+                    >
+                        Settings
+                    </button>
                 </ModuleHeadingWrapper>
 
-                {this.createGPIOitems(this.props.numOfLines)}
+                {this.createGPIOItems(this.props.numOfLines)}
 
                 {/* Setting overlay view */}
                 {this.createSettingsOverlay()}
