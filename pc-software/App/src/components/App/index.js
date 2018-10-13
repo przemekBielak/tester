@@ -49,7 +49,7 @@ class App extends Component {
             connectedDevicesIDs = {this.state.moduleIDs}
         />
         <DeviceArea />
-        <h2>is it below?</h2>
+        <h2>Footer</h2>
       </ApplicationWrapper>    
 
     );
