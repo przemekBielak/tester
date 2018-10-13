@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import GPIOItem from'./GPIOItem';
+import GPIOModuleItem from'./Item';
 import styled from 'styled-components';
-
-// Styling
 
 const ModuleWrapper = styled.div `
     margin-bottom: 10px;
@@ -72,12 +70,12 @@ class ModuleGPIO extends Component {
         };
     }
 
-    createGPIOItems(numOfLines) {
+    createGPIOModuleItems(numOfLines) {
         let table = []
 
         for (let i = 0; i < numOfLines; i++) {
             table.push(
-                <GPIOItem moduleID='1' itemID={i} key={i}/>
+                <GPIOModuleItem moduleID='1' itemID={i} key={i}/>
             );
         }
         return table;
@@ -142,7 +140,7 @@ class ModuleGPIO extends Component {
                     </button>
                 </ModuleHeadingWrapper>
 
-                {this.createGPIOItems(this.props.numOfLines)}
+                {this.createGPIOModuleItems(this.props.numOfLines)}
 
                 {/* Setting overlay view */}
                 {this.createSettingsOverlay()}

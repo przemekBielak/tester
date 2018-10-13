@@ -34,7 +34,7 @@ const TypeEnum = {
 };
 
 
-class GPIOItem extends Component {
+class GPIOModuleItem extends Component {
     constructor(props) {
         super(props);
 
@@ -90,4 +90,4 @@ class GPIOItem extends Component {
     }
 }
 
-export default GPIOItem;
+export default GPIOModuleItem;
