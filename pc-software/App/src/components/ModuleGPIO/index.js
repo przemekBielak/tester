@@ -67,7 +67,7 @@ class ModuleGPIO extends Component {
 
         this.state = {
             settingsActive: 0,
-        };
+        }
     }
 
     createGPIOModuleItems(numOfLines) {
@@ -108,9 +108,12 @@ class ModuleGPIO extends Component {
                     <SettingsOverlayContent>
                         <SettingsOverlayHeader>
                             <h2>GPIO Settings</h2>
-                            <button type='button' onClick={
-                                () => this.handleHideSettings()
-                            }>Close</button>
+                            <button 
+                                type='button' 
+                                onClick={() => this.handleHideSettings()}
+                            >
+                                Close
+                            </button>
                         </SettingsOverlayHeader>
                         {this.createSettingslines(this.props.numOfLines)}
                     </SettingsOverlayContent>
