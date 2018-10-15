@@ -71,12 +71,12 @@ class ModuleADC extends Component {
         }
     }
 
-    createADClines(numOfLines) {
+    createADClines(deviceName, moduleID, numOfLines) {
         let table = []
     
         for (let i = 0; i < numOfLines; i++) {
             table.push(
-                <ModuleADCItem moduleID='1' itemID={i} key={i}></ModuleADCItem>
+                <ModuleADCItem deviceName={deviceName} moduleID={moduleID} itemID={i} key={i}></ModuleADCItem>
             );
         }
         return table;
@@ -146,7 +146,7 @@ class ModuleADC extends Component {
                     </button>
                 </ModuleHeadingWrapper>
 
-                {this.createADClines(this.props.numOfLines)}
+                {this.createADClines(this.props.deviceName, this.props.moduleID, this.props.numOfLines)}
                 {this.createSettingsOverlay()}
 
             </ModuleWrapper>

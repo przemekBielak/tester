@@ -19,10 +19,23 @@ class ModuleADCItem extends Component {
         super(props);
 
         this.state = {
-            val: 1.123,
+            val: 0,
         }
+
+        this.ADCdata = {
+            deviceName: this.props.deviceName,
+            moduleID: this.props.moduleID,
+            itemID: this.props.itemID,
+            val: this.state.val,
+        };
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if(prevState.val !== this.state.val) {
+            this.ADCdata.val = this.props.val;
+        }
+        console.log(this.ADCdata);
+    }
 
     render() {
         return(

@@ -70,12 +70,12 @@ class ModuleGPIO extends Component {
         }
     }
 
-    createGPIOModuleItems(numOfLines) {
+    createGPIOModuleItems(numOfLines, deviceName, moduleID) {
         let table = []
 
         for (let i = 0; i < numOfLines; i++) {
             table.push(
-                <GPIOModuleItem moduleID='1' itemID={i} key={i}/>
+                <GPIOModuleItem deviceName={deviceName} moduleID={moduleID} itemID={i} key={i}/>
             );
         }
         return table;
@@ -90,6 +90,7 @@ class ModuleGPIO extends Component {
                     <ModuleLineBeginningWrapper>
                         <ModuleLineNumberWrapper>{i}.</ModuleLineNumberWrapper>
                     </ModuleLineBeginningWrapper>
+                    
                     <button type='button'>pull-up/pull-down</button>
                     <button type='button'>3.3V/5V</button>
                 </ModuleLineWrapper>
@@ -143,7 +144,7 @@ class ModuleGPIO extends Component {
                     </button>
                 </ModuleHeadingWrapper>
 
-                {this.createGPIOModuleItems(this.props.numOfLines)}
+                {this.createGPIOModuleItems(this.props.numOfLines, this.props.deviceName, this.props.moduleID)}
 
                 {/* Setting overlay view */}
                 {this.createSettingsOverlay()}

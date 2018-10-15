@@ -23,12 +23,12 @@ const ModuleLineInput = styled.input `
     width: 35px;
 `;
 
-const ValEnum = {
+const valEnum = {
     LOW: 0,
     HIGH: 1,
 }
 
-const TypeEnum = {
+const typeEnum = {
     IN: 0,
     OUT: 1,
 };
@@ -39,24 +39,43 @@ class GPIOModuleItem extends Component {
         super(props);
 
         this.state = {
-            Type: TypeEnum.IN,
-            Val: ValEnum.LOW,
+            type: typeEnum.IN,
+            val: valEnum.LOW,
+        };
+
+        this.GPIOdata = {
+            deviceName: this.props.deviceName,
+            moduleID: this.props.moduleID,
+            itemID: this.props.itemID,
+            type: this.state.type,
+            val: this.state.val,
         };
 
         this.handleType = this.handleType.bind(this);
+
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.val !== prevState.val) {
+            this.GPIOdata.val = this.state.val;
+        }
+        else if(this.state.type !== prevState.type) {
+            this.GPIOdata.type = this.state.type;
+        }
+        console.log(this.GPIOdata);
     }
 
     getKeyByValue(object, value) {
         return Object.keys(object).find(key => object[key] === value);
     }
-
+    
     createItemData() {
-        if(this.state.Type === TypeEnum.IN) {
+        if(this.state.type === typeEnum.IN) {
             return (
-                <p>{this.getKeyByValue(ValEnum, this.state.Val)}</p>
-            );
+                <p>{this.getKeyByValue(valEnum, this.state.val)}</p>
+                );
         }
-        else if(this.state.Type === TypeEnum.OUT) {
+        else if(this.state.type === typeEnum.OUT) {
             return (
                 <ModuleLineInput type='text'/>
             );
@@ -64,11 +83,11 @@ class GPIOModuleItem extends Component {
     }
 
     handleType() {
-        if(this.state.Type === TypeEnum.IN) {
-            this.setState({Type: TypeEnum.OUT});        
+        if(this.state.type === typeEnum.IN) {
+            this.setState({type: typeEnum.OUT});        
         }
         else {
-            this.setState({Type: TypeEnum.IN});  
+            this.setState({type: typeEnum.IN});  
         }
     }
 
@@ -81,7 +100,7 @@ class GPIOModuleItem extends Component {
                         type='button' 
                         onClick={() => this.handleType()}
                     >
-                        {this.getKeyByValue(TypeEnum, this.state.Type)}
+                        {this.getKeyByValue(typeEnum, this.state.type)}
                     </button>
                 </ItemBeginningWrapper>
                 {this.createItemData()}
