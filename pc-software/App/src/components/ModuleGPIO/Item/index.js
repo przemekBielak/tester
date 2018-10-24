@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+// const { spawn } = require('child_process');
 
 const ItemWrapper = styled.div `
     display: flex;
@@ -33,6 +34,7 @@ const typeEnum = {
     OUT: 1,
 };
 
+// const ls = spawn('ls', ['-lh', '/use']);
 
 class GPIOModuleItem extends Component {
     constructor(props) {
@@ -91,6 +93,10 @@ class GPIOModuleItem extends Component {
         }
     }
 
+    tmpUpdate() {
+        console.log(process.stdout.write('test'));
+    }
+
     render() {
         return (
             <ItemWrapper>
@@ -101,6 +107,11 @@ class GPIOModuleItem extends Component {
                         onClick={() => this.handleType()}
                     >
                         {this.getKeyByValue(typeEnum, this.state.type)}
+                    </button>
+                    <button
+                        onClick={() => this.tmpUpdate()}
+                    >
+                        tmp
                     </button>
                 </ItemBeginningWrapper>
                 {this.createItemData()}

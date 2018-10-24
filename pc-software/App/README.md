@@ -8,11 +8,10 @@ used packages:
 -   nodejs
 
 to run application for local development:
--   npm start (start server on port :3000)
+-   npm run server-dev (start server on port :9000)
 
 to build production application:
 -   npm run build 
 
 to start http server:
--   npm install -g serve (only once)
--   serve -s build (starts http server on port :5000)
+-   npm run server-prod (start server on port :5000)
