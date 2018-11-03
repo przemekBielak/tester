@@ -7,11 +7,11 @@ React commands:
 used packages:
 -   nodejs
 
-to run application for local development:
--   npm run server-dev (start server on port :9000)
-
 to build production application:
 -   npm run build 
 
-to start http server:
+to start production http server:
 -   npm run server-prod (start server on port :5000)
+
+to start development http server:
+-   npm run server-dev (start server on port :5000)
