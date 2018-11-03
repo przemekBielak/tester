@@ -94,7 +94,7 @@ class GPIOModuleItem extends Component {
     }
 
     tmpUpdate() {
-        console.log(process.stdout.write('test'));
+        console.log('test');
     }
 
     render() {
