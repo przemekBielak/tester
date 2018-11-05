@@ -28,8 +28,22 @@ app.get('/post', function(req, res) {
   var name = req.param('name');
   var id = req.param('id');
 
-  res.send('Your name is ' + name + ' ' + id);
-})
+  res.send('Your name is ' + name + ' ' + id + ' ' + req.method);
+});
+
+app.get('/gpio', function(req, res) {
+    var deviceName = req.param('deviceName');
+    var moduleID = req.param('moduleID');
+    var itemID = req.param('itemID');
+    var type = req.param('type');
+    var val = req.param('val');
+
+    console.log(deviceName);
+    console.log(moduleID);
+    console.log(itemID);
+    console.log(type);
+    console.log(val);
+});
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

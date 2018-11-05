@@ -93,6 +93,23 @@ class GPIOModuleItem extends Component {
         }
     }
 
+    sendInfo() {
+        var xhr = new XMLHttpRequest();
+        
+        xhr.open('GET', '/gpio?deviceName=' + this.GPIOdata.deviceName
+            + '&moduleID=' + this.GPIOdata.moduleID
+            + '&itemID=' + this.GPIOdata.itemID
+            + '&type=' + this.GPIOdata.type
+            + '&val=' + this.GPIOdata.val
+        );
+
+        xhr.onload = function() {
+            // nothing to be done after sending
+        }
+
+        xhr.send();
+    }
+
     render() {
         return (
             <ItemWrapper>
@@ -103,6 +120,12 @@ class GPIOModuleItem extends Component {
                         onClick={() => this.handleType()}
                     >
                         {this.getKeyByValue(typeEnum, this.state.type)}
+                    </button>
+
+                    <button
+                        onClick={() => this.sendInfo()}
+                    >
+                        SendInfo
                     </button>
                 </ItemBeginningWrapper>
                 {this.createItemData()}
