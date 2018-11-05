@@ -93,19 +93,6 @@ class GPIOModuleItem extends Component {
         }
     }
 
-    callBashScript() {
-        fetch("/bash")
-        .then(res => res.json())
-        .then(
-            (result) => {
-                console.log(result);   
-            },
-            (error) => {
-                console.log('Failed');
-            }
-        )
-    }
-
     render() {
         return (
             <ItemWrapper>
@@ -116,11 +103,6 @@ class GPIOModuleItem extends Component {
                         onClick={() => this.handleType()}
                     >
                         {this.getKeyByValue(typeEnum, this.state.type)}
-                    </button>
-                    <button
-                        onClick={() => this.callBashScript()}
-                    >
-                        tmp
                     </button>
                 </ItemBeginningWrapper>
                 {this.createItemData()}
