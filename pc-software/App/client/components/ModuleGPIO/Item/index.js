@@ -50,7 +50,7 @@ class GPIOModuleItem extends Component {
             moduleID: this.props.moduleID,
             itemID: this.props.itemID,
             type: this.state.type,
-            val: this.state.val,
+            val: this.state.val
         };
 
         this.handleType = this.handleType.bind(this);
@@ -95,19 +95,16 @@ class GPIOModuleItem extends Component {
 
     sendInfo() {
         var xhr = new XMLHttpRequest();
-        
-        xhr.open('GET', '/gpio?deviceName=' + this.GPIOdata.deviceName
-            + '&moduleID=' + this.GPIOdata.moduleID
-            + '&itemID=' + this.GPIOdata.itemID
-            + '&type=' + this.GPIOdata.type
-            + '&val=' + this.GPIOdata.val
-        );
+        xhr.open('POST', '/gpio');
+        xhr.setRequestHeader("Content-Type", "application/json");
 
         xhr.onload = function() {
-            // nothing to be done after sending
+            // nothing to be done
         }
 
-        xhr.send();
+        console.log(JSON.stringify(this.GPIOdata));
+
+        xhr.send(JSON.stringify(this.GPIOdata));
     }
 
     render() {

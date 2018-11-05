@@ -9,6 +9,9 @@ const data = require('./data.json');
 
 app.use(express.static(path.join(__dirname, '../dist/')));
 
+// Parse requests as JSON when needed
+app.use(express.json());
+
 app.get('/bash', (req, res) => {
   exec('./test.sh', function(err, stdout, stderr) {
     if(err) {
@@ -31,18 +34,9 @@ app.get('/post', function(req, res) {
   res.send('Your name is ' + name + ' ' + id + ' ' + req.method);
 });
 
-app.get('/gpio', function(req, res) {
-    var deviceName = req.param('deviceName');
-    var moduleID = req.param('moduleID');
-    var itemID = req.param('itemID');
-    var type = req.param('type');
-    var val = req.param('val');
-
-    console.log(deviceName);
-    console.log(moduleID);
-    console.log(itemID);
-    console.log(type);
-    console.log(val);
+app.post('/gpio', function(req, res) {
+  gpioData = req.body;
+  console.log(gpioData);
 });
 
 app.listen(PORT, () => {
