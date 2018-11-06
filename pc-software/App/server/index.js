@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '../dist/')));
 app.use(express.json());
 
 app.get('/bash', (req, res) => {
-  exec('./test.sh', function(err, stdout, stderr) {
+  exec('./test.sh hello!', function(err, stdout, stderr) {
     if(err) {
       return;
     }
@@ -23,6 +23,14 @@ app.get('/bash', (req, res) => {
 app.post('/gpio', function(req, res) {
   gpioData = req.body;
   console.log(gpioData);
+
+  exec('./server/test.sh ' + gpioData.val, function(err, stdout, stderr) {
+    if(err) {
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+    console.log(`stderr: ${stderr}`);
+  })
 });
 
 app.listen(PORT, () => {

@@ -81,7 +81,7 @@ class GPIOModuleItem extends Component {
     createItemData() {
         if(this.state.type === typeEnum.IN) {
             return (
-                <p>{this.getKeyByValue(valEnum, this.state.val)}</p>
+                <p>{this.state.val}</p>
                 );
         }
         else if(this.state.type === typeEnum.OUT) {
