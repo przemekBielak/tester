@@ -54,36 +54,6 @@ class App extends Component {
     )
   } 
 
-  getData() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/data', true);
-
-    xhr.onload = function() {
-      if(this.status == 200) {
-        var data1 = JSON.parse(this.responseText)[0];
-        console.log(data1.color);
-        console.log(data1.code);
-      }
-    }
-
-    xhr.onerror = function() {
-      console.log('Request error');
-    }
-
-    xhr.send();
-  }
-
-  sendData() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/post?name=Johnny&id=5', true);
-
-    xhr.onload = function() {
-      console.log(this.responseText);
-    }
-
-    xhr.send();
-  }
-
   render() {
     return (
       <ApplicationWrapper>
@@ -96,17 +66,6 @@ class App extends Component {
           onClick={() => this.callBashScript()}
         >
           run bash script
-        </button>
-        <input type='text'></input>
-        <button
-          onClick={() => this.getData()}  
-        >
-          Get data
-        </button>
-        <button
-          onClick={() => this.sendData()}  
-        >
-          Send data
         </button>
       </ApplicationWrapper>    
 

@@ -64,11 +64,18 @@ class GPIOModuleItem extends Component {
         else if(this.state.type !== prevState.type) {
             this.GPIOdata.type = this.state.type;
         }
-        console.log(this.GPIOdata);
+
+        this.sendInfo();
     }
 
     getKeyByValue(object, value) {
         return Object.keys(object).find(key => object[key] === value);
+    }
+
+    updateInputValue(evt) {
+        this.setState({
+            val: evt.target.value
+        });
     }
     
     createItemData() {
@@ -79,7 +86,10 @@ class GPIOModuleItem extends Component {
         }
         else if(this.state.type === typeEnum.OUT) {
             return (
-                <ModuleLineInput type='text'/>
+                <ModuleLineInput 
+                    type='text' 
+                    value={this.state.val}
+                    onChange={evt => this.updateInputValue(evt)}/>
             );
         }
     }
@@ -102,8 +112,6 @@ class GPIOModuleItem extends Component {
             // nothing to be done
         }
 
-        console.log(JSON.stringify(this.GPIOdata));
-
         xhr.send(JSON.stringify(this.GPIOdata));
     }
 
@@ -117,12 +125,6 @@ class GPIOModuleItem extends Component {
                         onClick={() => this.handleType()}
                     >
                         {this.getKeyByValue(typeEnum, this.state.type)}
-                    </button>
-
-                    <button
-                        onClick={() => this.sendInfo()}
-                    >
-                        SendInfo
                     </button>
                 </ItemBeginningWrapper>
                 {this.createItemData()}
