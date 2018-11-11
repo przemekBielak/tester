@@ -2,36 +2,19 @@ const express = require('express');
 const path = require('path');
 const { exec } = require('child_process');
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+const bashRouter = require('./routes/bash');
+const gpioRouter = require('./routes/gpio');
 
-app.use(express.static(path.join(__dirname, '../dist/')));
+const PORT = process.env.PORT || 5000;
+const app = express();
 
 // Parse requests as JSON when needed
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '../dist/')));
 
-app.get('/bash', (req, res) => {
-  exec('./test.sh hello!', function(err, stdout, stderr) {
-    if(err) {
-      return;
-    }
-    console.log(`stdout: ${stdout}`);
-    console.log(`stderr: ${stderr}`);
-  })
-});
+app.use('/bash', bashRouter);
+app.use('/gpio', gpioRouter);
 
-app.post('/gpio', function(req, res) {
-  gpioData = req.body;
-  console.log(gpioData);
-
-  exec('./server/test.sh ' + gpioData.val, function(err, stdout, stderr) {
-    if(err) {
-      return;
-    }
-    console.log(`stdout: ${stdout}`);
-    console.log(`stderr: ${stderr}`);
-  })
-});
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
