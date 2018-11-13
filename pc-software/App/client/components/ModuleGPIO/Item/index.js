@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-// const { spawn } = require('child_process');
 
 const ItemWrapper = styled.div `
     display: flex;
@@ -34,8 +33,6 @@ const typeEnum = {
     OUT: 1,
 };
 
-// const ls = spawn('ls', ['-lh', '/use']);
-
 class GPIOModuleItem extends Component {
     constructor(props) {
         super(props);
@@ -53,7 +50,8 @@ class GPIOModuleItem extends Component {
             val: this.state.val
         };
 
-        this.handleType = this.handleType.bind(this);
+        this.updateItemType = this.updateItemType.bind(this);
+        this.updateItemVal = this.updateItemVal.bind(this);
 
     }
     
@@ -65,45 +63,14 @@ class GPIOModuleItem extends Component {
             this.GPIOdata.type = this.state.type;
         }
 
-        this.sendInfo();
+        this.post();
     }
 
     getKeyByValue(object, value) {
         return Object.keys(object).find(key => object[key] === value);
     }
 
-    updateInputValue(evt) {
-        this.setState({
-            val: evt.target.value
-        });
-    }
-    
-    createItemData() {
-        if(this.state.type === typeEnum.IN) {
-            return (
-                <p>{this.state.val}</p>
-                );
-        }
-        else if(this.state.type === typeEnum.OUT) {
-            return (
-                <ModuleLineInput 
-                    type='text' 
-                    value={this.state.val}
-                    onChange={evt => this.updateInputValue(evt)}/>
-            );
-        }
-    }
-
-    handleType() {
-        if(this.state.type === typeEnum.IN) {
-            this.setState({type: typeEnum.OUT});        
-        }
-        else {
-            this.setState({type: typeEnum.IN});  
-        }
-    }
-
-    sendInfo() {
+    post() {
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/gpio');
         xhr.setRequestHeader("Content-Type", "application/json");
@@ -114,6 +81,38 @@ class GPIOModuleItem extends Component {
 
         xhr.send(JSON.stringify(this.GPIOdata));
     }
+    
+    updateItemType() {
+        if(this.state.type === typeEnum.IN) {
+            this.setState({type: typeEnum.OUT});        
+        }
+        else {
+            this.setState({type: typeEnum.IN});  
+        }
+    }
+
+    updateItemVal(evt) {
+        this.setState({
+            val: evt.target.value
+        });
+    }
+
+    itemVal(type, val, onChange) {
+        if(type === typeEnum.IN) {
+            return (
+                <p>{val}</p>
+            );
+        }
+        else if(type === typeEnum.OUT) {
+            return (
+                <ModuleLineInput 
+                    type='text' 
+                    value={val}
+                    onChange={evt => onChange(evt)}
+                />
+            );
+        }
+    }
 
     render() {
         return (
@@ -121,13 +120,13 @@ class GPIOModuleItem extends Component {
                 <ItemBeginningWrapper>
                     <ItemIDWrapper>{this.props.itemID}.</ItemIDWrapper>
                     <button 
-                        type='button' 
-                        onClick={() => this.handleType()}
+                        onClick={() => this.updateItemType()}
                     >
                         {this.getKeyByValue(typeEnum, this.state.type)}
                     </button>
                 </ItemBeginningWrapper>
-                {this.createItemData()}
+                
+                {this.itemVal(this.state.type, this.state.val, this.updateItemVal)}
             </ItemWrapper>
         );
     }

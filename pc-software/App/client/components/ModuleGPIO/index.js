@@ -68,6 +68,16 @@ class ModuleGPIO extends Component {
         this.state = {
             settingsActive: 0,
         }
+
+        this.handleHideSettings = this.handleHideSettings.bind(this);
+    }
+
+    handleShowSettings() {
+        this.setState({settingsActive: 1});
+    }
+
+    handleHideSettings() {
+        this.setState({settingsActive: 0});
     }
 
     createGPIOModuleItems(numOfLines, deviceName, moduleID) {
@@ -99,36 +109,28 @@ class ModuleGPIO extends Component {
         return table;
     }
 
-    createSettingsOverlay() {
-        if(this.state.settingsActive === 0) {
+    createSettingsOverlay(settingsActive, onClick, numOfLines) {
+        if(settingsActive === 0) {
             // return();
         }
-        else if(this.state.settingsActive === 1) {
+        else if(settingsActive === 1) {
             return (
                 <SettingsOverlay>
                     <SettingsOverlayContent>
                         <SettingsOverlayHeader>
                             <h2>GPIO Settings</h2>
                             <button 
-                                type='button' 
-                                onClick={() => this.handleHideSettings()}
+                                onClick={() => onClick()}
                             >
                                 Close
                             </button>
                         </SettingsOverlayHeader>
-                        {this.createSettingslines(this.props.numOfLines)}
+
+                        {this.createSettingslines(numOfLines)}
                     </SettingsOverlayContent>
                 </SettingsOverlay>
             );
         }
-    }
-
-    handleShowSettings() {
-        this.setState({settingsActive: 1});
-    }
-
-    handleHideSettings() {
-        this.setState({settingsActive: 0});
     }
 
     render() {
@@ -147,7 +149,7 @@ class ModuleGPIO extends Component {
                 {this.createGPIOModuleItems(this.props.numOfLines, this.props.deviceName, this.props.moduleID)}
 
                 {/* Setting overlay view */}
-                {this.createSettingsOverlay()}
+                {this.createSettingsOverlay(this.state.settingsActive, this.handleHideSettings, this.props.numOfLines)}
             </ModuleWrapper>
         );
     }

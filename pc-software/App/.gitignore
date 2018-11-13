@@ -9,6 +9,9 @@
 # production
 # /dist
 
+# vscode settings
+.vscode
+
 # misc
 .DS_Store
 .env.local
