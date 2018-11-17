@@ -20,7 +20,19 @@ class ModuleGPIO extends Component {
         super(props);
 
         this.state = {
+            settingsActive: 0,
         }
+
+        this.hideSettingsHandler = this.hideSettingsHandler.bind(this);
+        this.showSettingsHandler = this.showSettingsHandler.bind(this);
+    }
+
+    showSettingsHandler() {
+        this.setState({settingsActive: 1});
+    }
+
+    hideSettingsHandler() {
+        this.setState({settingsActive: 0});
     }
 
     //TODO move to ItemContainer
@@ -40,8 +52,6 @@ class ModuleGPIO extends Component {
         return table;
     }
 
-
-
     render() {
         return (
             <ModuleWrapper>
@@ -49,7 +59,7 @@ class ModuleGPIO extends Component {
                     <h2>GPIO</h2>
                     <button 
                         type='button' 
-                        onClick={() => this.handleShowSettings()}
+                        onClick={() => this.showSettingsHandler()}
                     >
                         Settings
                     </button>
@@ -57,7 +67,12 @@ class ModuleGPIO extends Component {
 
                 {this.createItemContainers(this.props.numOfLines, this.props.deviceName, this.props.moduleID)}
 
-                <SettingsContainer numOfLines={this.props.numOfLines} />
+                <SettingsContainer 
+                    settingsActive={this.state.settingsActive}
+                    hideSettingsHandler={this.hideSettingsHandler}
+                    showSettingsHandler={this.showSettingsHandler}
+                    numOfLines={this.props.numOfLines}
+                />
             
             </ModuleWrapper>
         );

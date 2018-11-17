@@ -7,27 +7,15 @@ class SettingsContainer extends Component {
         super(props);
 
         this.state = {
-            settingsActive: 1,
         }
-
-        this.hideSettingsHandler = this.hideSettingsHandler.bind(this);
-        this.showSettingsHandler = this.showSettingsHandler.bind(this);
-    }
-
-    showSettingsHandler() {
-        this.setState({settingsActive: 1});
-    }
-
-    hideSettingsHandler() {
-        this.setState({settingsActive: 0});
     }
 
     render() {
         return (
             <Settings
-                settingsActive={this.state.settingsActive}
-                hideSettingsHandler={this.hideSettingsHandler}
-                showSettingsHandler={this.showSettingsHandler}
+                settingsActive={this.props.settingsActive}
+                hideSettingsHandler={this.props.hideSettingsHandler}
+                showSettingsHandler={this.props.showSettingsHandler}
                 numOfLines={this.props.numOfLines}
             />
         )
