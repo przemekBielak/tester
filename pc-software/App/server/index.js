@@ -2,8 +2,8 @@ const express = require('express');
 const path = require('path');
 const { exec } = require('child_process');
 
-const bashRouter = require('./routes/bash');
-const gpioRouter = require('./routes/gpio');
+const bashRouter = require('./routes/bash/bash.js');
+const gpioRouter = require('./routes/gpio/gpio.js');
 
 const PORT = process.env.PORT || 5000;
 const app = express();

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ModuleHeading from '../ModuleHeading';
-import ModuleADCItem from './Item';
+import ModuleADCItem from './Item/Item.js';
 import styled from 'styled-components';
 
 const ModuleWrapper = styled.div `

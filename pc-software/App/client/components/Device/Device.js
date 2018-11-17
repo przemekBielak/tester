@@ -1,5 +1,5 @@
 import React from 'react';
-import ModuleADC from '../ModuleADC';
+import ModuleADC from '../ModuleADC/ModuleADC.js';
 import ModuleGPIO from '../ModuleGPIO/ModuleGPIO.js';
 import styled from 'styled-components';
 
