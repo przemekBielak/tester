@@ -1,6 +1,6 @@
 import React from 'react';
 import ModuleADC from '../ModuleADC';
-import ModuleGPIO from '../ModuleGPIO';
+import ModuleGPIO from '../ModuleGPIO/ModuleGPIO.js';
 import styled from 'styled-components';
 
 const DeviceWrapper = styled.div `
