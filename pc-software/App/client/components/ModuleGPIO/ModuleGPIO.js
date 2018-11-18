@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
 import ItemContainer from './Item/ItemContainer.js';
 import SettingsContainer from './Settings/SettingsContainer.js';
-import styled from 'styled-components';
+import HeaderContainer from './Header/HeaderContainer.js';
 
 const ModuleWrapper = styled.div `
     margin-bottom: 10px;
@@ -9,11 +11,6 @@ const ModuleWrapper = styled.div `
     border: solid 1px black;
 `;
 
-const ModuleHeadingWrapper = styled.div `
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid blue;
-`;
 
 class ModuleGPIO extends Component {
     constructor(props) {
@@ -35,7 +32,6 @@ class ModuleGPIO extends Component {
         this.setState({settingsActive: 0});
     }
 
-    //TODO move to ItemContainer
     createItemContainers(numOfLines, deviceName, moduleID) {
         let table = []
 
@@ -55,22 +51,16 @@ class ModuleGPIO extends Component {
     render() {
         return (
             <ModuleWrapper>
-                <ModuleHeadingWrapper>
-                    <h2>GPIO</h2>
-                    <button 
-                        type='button' 
-                        onClick={() => this.showSettingsHandler()}
-                    >
-                        Settings
-                    </button>
-                </ModuleHeadingWrapper>
+                
+                <HeaderContainer 
+                    showSettingsHandler={this.showSettingsHandler}
+                />
 
                 {this.createItemContainers(this.props.numOfLines, this.props.deviceName, this.props.moduleID)}
 
                 <SettingsContainer 
                     settingsActive={this.state.settingsActive}
                     hideSettingsHandler={this.hideSettingsHandler}
-                    showSettingsHandler={this.showSettingsHandler}
                     numOfLines={this.props.numOfLines}
                 />
             

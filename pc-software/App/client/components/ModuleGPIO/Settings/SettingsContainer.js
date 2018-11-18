@@ -15,7 +15,6 @@ class SettingsContainer extends Component {
             <Settings
                 settingsActive={this.props.settingsActive}
                 hideSettingsHandler={this.props.hideSettingsHandler}
-                showSettingsHandler={this.props.showSettingsHandler}
                 numOfLines={this.props.numOfLines}
             />
         )
