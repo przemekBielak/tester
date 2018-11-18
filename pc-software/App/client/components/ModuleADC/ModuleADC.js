@@ -3,18 +3,13 @@ import styled from 'styled-components';
 
 import ItemContainer from './Item/ItemContainer.js';
 import SettingsContainer from './Settings/SettingsContainer.js';
+import HeaderContainer from './Header/HeaderContainer.js';
 
 
 const ModuleWrapper = styled.div `
     margin-bottom: 10px;
     margin-top: 10px;
     border: solid 1px black;
-`;
-
-const ModuleHeadingWrapper = styled.div `
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid blue;
 `;
 
 
@@ -58,15 +53,10 @@ class ModuleADC extends Component {
     render() {
         return(
             <ModuleWrapper>
-                <ModuleHeadingWrapper>
-                    <h2>ADC</h2>
-                    <button 
-                        type='button'
-                        onClick={() => this.showSettingsHandler()}
-                    >
-                        Settings
-                    </button>
-                </ModuleHeadingWrapper>
+
+                <HeaderContainer
+                    showSettingsHandler={this.showSettingsHandler}
+                />
 
                 {this.createADClines(this.props.deviceName, this.props.moduleID, this.props.numOfLines)}
                 
