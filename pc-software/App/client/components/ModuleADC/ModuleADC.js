@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import ModuleADCItem from './Item/Item.js';
 import styled from 'styled-components';
+
+import ItemContainer from './Item/ItemContainer.js';
+
 
 const ModuleWrapper = styled.div `
     margin-bottom: 10px;
@@ -75,7 +77,12 @@ class ModuleADC extends Component {
     
         for (let i = 0; i < numOfLines; i++) {
             table.push(
-                <ModuleADCItem deviceName={deviceName} moduleID={moduleID} itemID={i} key={i}></ModuleADCItem>
+                <ItemContainer 
+                    deviceName={deviceName} 
+                    moduleID={moduleID} 
+                    itemID={i} 
+                    key={i}
+                />
             );
         }
         return table;

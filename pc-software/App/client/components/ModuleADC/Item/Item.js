@@ -13,38 +13,14 @@ const ModuleLineNumberWrapper = styled.p `
     width: 35px;
 `;
 
-class ModuleADCItem extends Component {
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            val: 0,
-        }
-
-        this.ADCdata = {
-            deviceName: this.props.deviceName,
-            moduleID: this.props.moduleID,
-            itemID: this.props.itemID,
-            val: this.state.val,
-        };
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        if(prevState.val !== this.state.val) {
-            this.ADCdata.val = this.props.val;
-        }
-        console.log(this.ADCdata);
-    }
-
-    render() {
-        return(
-            <ModuleLineWrapper>
-                <ModuleLineNumberWrapper>{this.props.itemID}.</ModuleLineNumberWrapper>
-                <p>{this.state.val}</p>
-            </ModuleLineWrapper>
-        );
-    }
+function Item(props) {
+    return (
+        <ModuleLineWrapper>
+            <ModuleLineNumberWrapper>{props.itemID}.</ModuleLineNumberWrapper>
+            <p>{props.val}</p>
+        </ModuleLineWrapper>
+    );
 }
 
-export default ModuleADCItem;
+
+export default Item;
