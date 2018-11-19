@@ -7,13 +7,17 @@ const ModuleHeadingWrapper = styled.div `
     border: 1px solid blue;
 `;
 
-function  ModuleHeading(props) {
-    return(
+function Header(props) {
+    return (
         <ModuleHeadingWrapper>
-            <h2>{props.moduleName}</h2>
-            <button type='button'>Settings</button>
+            <h2>GPIO</h2>
+            <button 
+                onClick={() => props.showSettingsHandler()}
+            >
+                Settings
+            </button>
         </ModuleHeadingWrapper>
     );
-};
+}
 
-export default ModuleHeading;
+export default Header;

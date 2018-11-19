@@ -1,5 +1,5 @@
 import React from 'react';
-import Device from '../Device';
+import Device from '../Device/Device.js';
 import styled from 'styled-components';
 
 const DeviceAreaWrapper = styled.div `

@@ -18,6 +18,6 @@ function StatusBar(props) {
             <h1>{props.connectedDevicesIDs}</h1>
         </StatusBarWrapper>
     );
-};
+}
 
 export default StatusBar;

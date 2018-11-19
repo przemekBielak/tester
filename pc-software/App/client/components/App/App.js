@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 
 // Import all components
-import StatusBar from '../StatusBar';
-import DeviceArea from '../DeviceArea';
+import StatusBar from '../StatusBar/StatusBar.js';
+import DeviceArea from '../DeviceArea/DeviceArea.js';
 
 // Styling
 import styled from 'styled-components';

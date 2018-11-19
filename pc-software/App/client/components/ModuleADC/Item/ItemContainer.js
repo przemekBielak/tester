@@ -1,19 +1,7 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import Item from './Item.js';
 
-const ModuleLineWrapper = styled.div `
-    display: flex;
-    justify-content: space-between;
-    flex-wrap:nowrap;
-    border: 1px solid green;
-    margin: 2px 0px;
-`;
-
-const ModuleLineNumberWrapper = styled.p `
-    width: 35px;
-`;
-
-class ModuleADCItem extends Component {
+class ItemContainer extends Component {
 
     constructor(props) {
         super(props);
@@ -38,13 +26,13 @@ class ModuleADCItem extends Component {
     }
 
     render() {
-        return(
-            <ModuleLineWrapper>
-                <ModuleLineNumberWrapper>{this.props.itemID}.</ModuleLineNumberWrapper>
-                <p>{this.state.val}</p>
-            </ModuleLineWrapper>
+        return( 
+            <Item 
+                val={this.state.val}
+                itemID={this.props.itemID}
+            />
         );
     }
 }
 
-export default ModuleADCItem;
+export default ItemContainer;
