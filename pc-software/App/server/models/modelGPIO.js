@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var gpioSchema = new Schema({
+var gpioSchema = mongoose.Schema({
     _id: String,
     type: Number,
     val: Number

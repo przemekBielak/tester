@@ -1,7 +1,7 @@
 {
   "name": "embedded_tester",
   "version": "1.0.0",
-  "description": "embedded tester web gui",
+  "description": "embedded tester application",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,7 +14,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "mongodb": "^3.1.9",
     "mongoose": "^5.3.11",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",

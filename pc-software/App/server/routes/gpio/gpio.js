@@ -1,25 +1,29 @@
 const express = require('express');
 const { exec } = require('child_process');
+const modelGPIO = require('../../models/modelGPIO.js');
 const router = express.Router();
 
-var GPIO = require('../../models/modelGPIO.js');
-
 router.post('/', function(req, res) {
-    gpioData = req.body;
-    console.log(gpioData);
 
-    var data = new GPIO({
-      _id: gpioData.id,
-      type: gpioData.type,
-      val: gpioData.val
+    var data = new modelGPIO({
+        _id: req.body.id,
+        type: req.body.type,
+        val: req.body.val
     })
 
-    data.save(function(err) {
-      if(err) throw err;
-
-      console.log('GPIO data saved successfully');
-    });
-  
+    // Check if _id exists in database. If no, create new object, if yes, update the existing one
+    modelGPIO.findOne({_id: req.body.id}, function(err, docs) {
+        if(docs === null) {
+            data.save(function(err) {
+            if(err) throw err;
+        });
+        } else {
+            modelGPIO.findByIdAndUpdate(req.body.id, 
+                {$set: {type: req.body.type, val: req.body.val}},
+                function(err, gpio) {if(err) throw err }
+            );
+        }
   });
+});
 
 module.exports = router;
