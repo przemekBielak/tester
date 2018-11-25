@@ -21,9 +21,7 @@ class ItemContainer extends Component {
         };
 
         this.GPIOdata = {
-            deviceName: this.props.deviceName,
-            moduleID: this.props.moduleID,
-            itemID: this.props.itemID,
+            id: this.props.deviceName + '_' + 'GPIO' + '_' + this.props.moduleID + '_' +  this.props.itemID,
             type: this.state.type,
             val: this.state.val
         };

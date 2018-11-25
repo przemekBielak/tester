@@ -12,7 +12,7 @@ const DeviceWrapper = styled.div `
 function createDevice(deviceName) {
     let table = [];
 
-    if (deviceName === 'Main Device') {
+    if (deviceName === 'MainDevice') {
         table.push(
             <div key={deviceName}>
                 <ModuleGPIO numOfLines={15} deviceName={deviceName} moduleID='1'/>
@@ -20,7 +20,7 @@ function createDevice(deviceName) {
             </div>
         );
     }
-    else if (deviceName === 'Extention Device 1') {
+    else if (deviceName === 'ExtentionDevice1') {
         table.push(
             <div key={deviceName}>
                 <ModuleGPIO numOfLines={10} deviceName={deviceName} moduleID='1'/>
@@ -28,7 +28,7 @@ function createDevice(deviceName) {
             </div>
         );
     }
-    else if (deviceName === 'Extention Device 2') {
+    else if (deviceName === 'ExtentionDevice2') {
         table.push(
             <div key={deviceName}>
                 <ModuleADC numOfLines={10} deviceName={deviceName} moduleID='1'/>
@@ -36,7 +36,7 @@ function createDevice(deviceName) {
             </div>
         );
     }
-    else if (deviceName === 'Extention Device 3') {
+    else if (deviceName === 'ExtentionDevice3') {
         table.push(
             <div key={deviceName}>
                 <ModuleGPIO numOfLines={15} deviceName={deviceName} moduleID='1'/>

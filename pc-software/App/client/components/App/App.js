@@ -23,7 +23,7 @@ injectGlobal`
   }
 `
 
-const ApplicationWrapper = styled.div `
+const ApplicationWrapper = styled.div`
   padding: 5px;
   border: 1px solid black;
 `
@@ -43,23 +43,23 @@ class App extends Component {
 
   callBashScript() {
     fetch("/bash")
-    .then(res => res.json())
-    .then(
+      .then(res => res.json())
+      .then(
         (result) => {
-            console.log(result);   
+          console.log(result);
         },
         (error) => {
-            console.log('Failed');
+          console.log('Failed');
         }
-    )
-  } 
+      )
+  }
 
   render() {
     return (
       <ApplicationWrapper>
-        <StatusBar 
-            connectionStatus = {this.state.connectionStatus}
-            connectedDevicesIDs = {this.state.moduleIDs}
+        <StatusBar
+          connectionStatus={this.state.connectionStatus}
+          connectedDevicesIDs={this.state.moduleIDs}
         />
         <DeviceArea />
         <button
@@ -67,7 +67,7 @@ class App extends Component {
         >
           run bash script
         </button>
-      </ApplicationWrapper>    
+      </ApplicationWrapper>
 
     );
   }

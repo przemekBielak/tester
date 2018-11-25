@@ -10,10 +10,10 @@ const DeviceAreaWrapper = styled.div `
 function DeviceArea(props) {
     return (
         <DeviceAreaWrapper>
-            <Device deviceName='Main Device' key='main'/>
-            <Device deviceName='Extention Device 1' key='ext1'/>
-            <Device deviceName='Extention Device 2' key='ext2'/>
-            <Device deviceName='Extention Device 3' key='ext3'/>
+            <Device deviceName='MainDevice' key='main'/>
+            <Device deviceName='ExtentionDevice1' key='ext1'/>
+            <Device deviceName='ExtentionDevice2' key='ext2'/>
+            <Device deviceName='ExtentionDevice3' key='ext3'/>
         </DeviceAreaWrapper>
     );
 };

@@ -1,6 +1,9 @@
 const express = require('express');
 const path = require('path');
 const { exec } = require('child_process');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/embedded-tester-db');
 
 const bashRouter = require('./routes/bash/bash.js');
 const gpioRouter = require('./routes/gpio/gpio.js');
