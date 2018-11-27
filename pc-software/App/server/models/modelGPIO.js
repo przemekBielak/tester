@@ -1,17 +1,23 @@
-const mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
 
-var gpioSchema = mongoose.Schema({
-    _id: String,
-    type: Number,
-    val: Number
+const url = 'mongodb://localhost:27017/embedded-tester-db';
+
+mongo = MongoClient.connect(url, function(err, db) {
+    if(err) throw err;
+    console.log("Database created");
+
+    var dbo = db.db("mydb");
+    var myobj = [
+        {name: "Przemek", address: "Polska"},
+        {name: "John", address: "USA"}
+    ];
+
+
+    dbo.collection("customers").find({}).toArray(function(err, res) {
+        if(err) throw err;
+        console.log(res);
+        db.close();
+    });
 });
 
-// gpioSchema.methods.dudify = function() {
-//     this.name = this.name + '-dude';
-
-//     return this.name;   
-// }
-
-var GPIO = mongoose.model('GPIO', gpioSchema);
-
-module.exports = GPIO;
+module.exports = mongo;

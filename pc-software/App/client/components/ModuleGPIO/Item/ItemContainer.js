@@ -31,6 +31,9 @@ class ItemContainer extends Component {
 
     }
     
+    //TODO: Delete GPIOdata object. 
+    //      Directly send data from component state
+    //      this.post() maybe in different place - check
     componentDidUpdate(prevProps, prevState) {
         if (this.state.val !== prevState.val) {
             this.GPIOdata.val = this.state.val;
