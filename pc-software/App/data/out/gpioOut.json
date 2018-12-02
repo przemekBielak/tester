@@ -1,21 +1,17 @@
 {
     "MainDevice_GPIO_1_0": {
-        "type": 1,
-        "val": 0
-    },
-    "MainDevice_GPIO_1_1": {
-        "type": 1,
-        "val": 0
-    },
-    "MainDevice_GPIO_1_2": {
-        "type": 1,
-        "val": 0
-    },
-    "MainDevice_GPIO_1_3": {
         "type": 0,
         "val": 0
     },
-    "MainDevice_GPIO_1_4": {
+    "MainDevice_GPIO_1_1": {
+        "type": 0,
+        "val": 0
+    },
+    "MainDevice_GPIO_1_2": {
+        "type": 0,
+        "val": 0
+    },
+    "MainDevice_GPIO_1_3": {
         "type": 0,
         "val": 0
     },
@@ -28,6 +24,10 @@
         "val": 0
     },
     "MainDevice_GPIO_1_7": {
+        "type": 0,
+        "val": 0
+    },
+    "MainDevice_GPIO_1_4": {
         "type": 0,
         "val": 0
     },

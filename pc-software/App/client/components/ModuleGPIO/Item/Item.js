@@ -43,10 +43,11 @@ function handleValChange(updateValHandler, e) {
     updateValHandler(e.target.value);
 }
 
-function itemVal(type, val, updateValHandler) {
+function itemVal(type, serverVal, val, updateValHandler) {
     if(type === typeEnum.IN) {
         return (
-            <p>{val}</p>
+            // <p>{getKeyByValue(valEnum, serverVal)}</p>
+            <p>{serverVal}</p>
         );
     }
     else if(type === typeEnum.OUT) {
@@ -78,7 +79,7 @@ function Item(props) {
                 </button>
             </ItemBeginningWrapper>
 
-            {itemVal(props.type, props.val, props.updateItemVal)}
+            {itemVal(props.type, props.serverVal, props.val, props.updateItemVal)}
         </ItemWrapper>
     );
 }

@@ -23,7 +23,7 @@ router.post('/', function(req, res) {
 router.get('/', function(req, res) {
     var inObj = JSON.parse(fs.readFileSync(dataInPath, 'utf8'));
 
-    var inputVal = inObj[req.query.id].type
+    var inputVal = inObj[req.query.id].val;
     res.send({val: inputVal});
 });
 
