@@ -1,12 +1,15 @@
 const express = require('express');
-const { exec } = require('child_process');
 const fs = require('fs');
-// const modelGPIO = require('../../models/modelGPIO.js');
 const router = express.Router();
 
+var obj = {};
+
 router.post('/', function(req, res) {
-    console.log(req.body);
-    fs.appendFile("gpio.json", JSON.stringify(req.body) + '\n', function(err) {
+    key = req.body.id;
+    val = {type: req.body.type, val: req.body.val};
+    obj[key] = val;
+    
+    fs.writeFile("gpio.json", JSON.stringify(obj, null, 4) + ',\n', function(err) {
         if (err) throw err;
     });
 });

@@ -20,28 +20,12 @@ class ItemContainer extends Component {
             val: valEnum.LOW,
         };
 
-        this.GPIOdata = {
-            id: this.props.deviceName + '_' + 'GPIO' + '_' + this.props.moduleID + '_' +  this.props.itemID,
-            type: this.state.type,
-            val: this.state.val
-        };
-
         this.updateItemType = this.updateItemType.bind(this);
         this.updateItemVal = this.updateItemVal.bind(this);
 
     }
     
-    //TODO: Delete GPIOdata object. 
-    //      Directly send data from component state
-    //      this.post() maybe in different place - check
     componentDidUpdate(prevProps, prevState) {
-        if (this.state.val !== prevState.val) {
-            this.GPIOdata.val = this.state.val;
-        }
-        else if(this.state.type !== prevState.type) {
-            this.GPIOdata.type = this.state.type;
-        }
-
         this.post();
     }
 
@@ -53,6 +37,12 @@ class ItemContainer extends Component {
         xhr.onload = function() {
             // nothing to be done
         }
+
+        GPIOdata = {
+            id: this.props.deviceName + '_' + 'GPIO' + '_' + this.props.moduleID + '_' +  this.props.itemID,
+            type: this.state.type,
+            val: this.state.val
+        };
 
         xhr.send(JSON.stringify(this.GPIOdata));
     }
