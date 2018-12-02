@@ -22,17 +22,22 @@ class ItemContainer extends Component {
 
         this.updateItemType = this.updateItemType.bind(this);
         this.updateItemVal = this.updateItemVal.bind(this);
+        this.get = this.get.bind(this);
 
     }
+
+    componentDidMount(prevProps, prevState) {
+        this.post();
+    }
     
-    // componentDidUpdate(prevProps, prevState) {
-    //     this.post();
-    // }
+    componentDidUpdate(prevProps, prevState) {
+        this.post();
+    }
 
     post() {
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/gpio');
-        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.open('POST', '/gpio', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
 
         xhr.onload = function() {
             // nothing to be done
@@ -43,10 +48,35 @@ class ItemContainer extends Component {
             type: this.state.type,
             val: this.state.val
         };
-        console.log(GPIOdata);
 
         xhr.send(JSON.stringify(GPIOdata));
+    }
 
+    // Send GET request to server for specific id
+    // Server responds with input data set by linux app
+    // Set item state with received data
+    get() {
+        var xhr = new XMLHttpRequest();
+
+        var url = '/gpio';
+        var params = 'id=' + this.props.deviceName + '_' + 'GPIO' + '_' + this.props.moduleID + '_' +  this.props.itemID;
+
+        xhr.open('GET', url + '?' + params, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.onreadystatechange = function(aEvt) {
+            if(xhr.readyState === 4) {
+                if(xhr.status === 200) {
+                    // received input data
+                    var inputVal = JSON.parse(xhr.responseText).val;
+                    console.log(inputVal);
+                    // this.updateItemVal(inputVal);
+                } else {
+                    console.log('err');
+                }
+            }
+        }
+        xhr.send(null);
     }
     
     updateItemType() {
@@ -56,14 +86,12 @@ class ItemContainer extends Component {
         else {
             this.setState({type: typeEnum.IN});  
         }
-        this.post();
     }
 
     updateItemVal(val) {
         this.setState({
             val: val
         });
-        this.post();
     }
 
     render() {
@@ -74,6 +102,7 @@ class ItemContainer extends Component {
                 val={this.state.val} 
                 updateItemType={this.updateItemType}
                 updateItemVal={this.updateItemVal}
+                get={this.get}
             />
         );
     }

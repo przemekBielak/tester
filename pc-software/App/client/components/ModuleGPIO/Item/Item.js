@@ -70,6 +70,12 @@ function Item(props) {
                 >
                     {getKeyByValue(typeEnum, props.type)}
                 </button>
+
+                <button
+                    onClick={() => props.get()}
+                >
+                    get
+                </button>
             </ItemBeginningWrapper>
 
             {itemVal(props.type, props.val, props.updateItemVal)}

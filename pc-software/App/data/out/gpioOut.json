@@ -87,6 +87,10 @@
         "type": 0,
         "val": 0
     },
+    "ExtentionDevice1_GPIO_1_7": {
+        "type": 0,
+        "val": 0
+    },
     "ExtentionDevice1_GPIO_1_8": {
         "type": 0,
         "val": 0
@@ -96,10 +100,6 @@
         "val": 0
     },
     "ExtentionDevice3_GPIO_1_0": {
-        "type": 0,
-        "val": 0
-    },
-    "ExtentionDevice1_GPIO_1_7": {
         "type": 0,
         "val": 0
     },
