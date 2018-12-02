@@ -25,9 +25,9 @@ class ItemContainer extends Component {
 
     }
     
-    componentDidUpdate(prevProps, prevState) {
-        this.post();
-    }
+    // componentDidUpdate(prevProps, prevState) {
+    //     this.post();
+    // }
 
     post() {
         var xhr = new XMLHttpRequest();
@@ -38,13 +38,15 @@ class ItemContainer extends Component {
             // nothing to be done
         }
 
-        GPIOdata = {
+        var GPIOdata = {
             id: this.props.deviceName + '_' + 'GPIO' + '_' + this.props.moduleID + '_' +  this.props.itemID,
             type: this.state.type,
             val: this.state.val
         };
+        console.log(GPIOdata);
 
-        xhr.send(JSON.stringify(this.GPIOdata));
+        xhr.send(JSON.stringify(GPIOdata));
+
     }
     
     updateItemType() {
@@ -54,12 +56,14 @@ class ItemContainer extends Component {
         else {
             this.setState({type: typeEnum.IN});  
         }
+        this.post();
     }
 
     updateItemVal(val) {
         this.setState({
             val: val
         });
+        this.post();
     }
 
     render() {
