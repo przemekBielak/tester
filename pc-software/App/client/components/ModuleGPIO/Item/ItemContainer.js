@@ -11,6 +11,8 @@ const typeEnum = {
     OUT: 1,
 };
 
+const UPDATE_TIME_MS = 100;
+
 class ItemContainer extends Component {
     constructor(props) {
         super(props);
@@ -19,6 +21,7 @@ class ItemContainer extends Component {
             type: typeEnum.IN,
             val: valEnum.LOW,
             serverVal: valEnum.LOW,
+            postUpdatePending: 0,
         };
 
         this.updateItemType = this.updateItemType.bind(this);
@@ -27,15 +30,23 @@ class ItemContainer extends Component {
     }
 
     componentDidMount(prevProps, prevState) {
-        this.post();
-        this.get();
+        this.timerID = setInterval(() => {
+            this.get();
+
+            // send data to server only when change is needed
+            if(this.state.postUpdatePending === 1) {
+                this.post();
+                this.setState({postUpdatePending: 0});
+            }
+        }, UPDATE_TIME_MS);
     }
     
-    componentDidUpdate(prevProps, prevState) {
-        this.post();
+    componentWillUnmount() {
+        clearInterval(this.timerID);
     }
 
     post() {
+        console.log('sent');
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/gpio', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
@@ -85,12 +96,18 @@ class ItemContainer extends Component {
         else {
             this.setState({type: typeEnum.IN});  
         }
+
+        // new data should be sent to the server, set postUpdatePending flag
+        this.setState({postUpdatePending: 1});
     }
 
     updateItemVal(val) {
         this.setState({
             val: val
         });
+
+        // new data should be sent to the server, set postUpdatePending flag
+        this.setState({postUpdatePending: 1});
     }
 
     render() {
@@ -102,7 +119,7 @@ class ItemContainer extends Component {
                 val={this.state.val} 
                 updateItemType={this.updateItemType}
                 updateItemVal={this.updateItemVal}
-                get={this.get}
+                post={this.post}
             />
         );
     }
