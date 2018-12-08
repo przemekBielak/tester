@@ -4,7 +4,7 @@ import ModuleGPIO from '../ModuleGPIO/ModuleGPIO.js';
 import styled from 'styled-components';
 
 const DeviceWrapper = styled.div `
-    width: 300px;
+    width: 400px;
     padding: 5px;
     border: 1px solid red;
 `;

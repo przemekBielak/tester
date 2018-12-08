@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const DeviceAreaWrapper = styled.div `
     display: flex;
     border: 1px solid black;
+    justify-content: center; // center horizontaly
 `;
 
 function createDeviceList(connectedDevices) {

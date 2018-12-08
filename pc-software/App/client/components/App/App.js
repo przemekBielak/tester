@@ -35,7 +35,8 @@ class App extends Component {
         super(props);
 
         this.state = {
-            connectedDevices: ['MainDevice', 'ExtentionDevice1', 'ExtentionDevice2', 'ExtentionDevice3'],
+            // connectedDevices: ['MainDevice', 'ExtentionDevice1', 'ExtentionDevice2', 'ExtentionDevice3'],
+            connectedDevices: ['MainDevice'],
         };
     }
 
@@ -64,7 +65,7 @@ class App extends Component {
                     onClick={() => this.callBashScript()}
                 >
                     run bash script
-        </button>
+                </button>
             </ApplicationWrapper>
 
         );
