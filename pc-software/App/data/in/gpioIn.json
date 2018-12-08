@@ -1,19 +1,19 @@
 {
     "MainDevice_GPIO_1_0": {
         "type": 0,
-        "val": 1
+        "val": 19
     },
     "MainDevice_GPIO_1_1": {
         "type": 0,
-        "val": 1
+        "val": 9
     },
     "MainDevice_GPIO_1_2": {
         "type": 0,
-        "val": 0
+        "val": 9
     },
     "MainDevice_GPIO_1_3": {
         "type": 0,
-        "val": 0
+        "val": 15
     },
     "MainDevice_GPIO_1_4": {
         "type": 0,
@@ -177,6 +177,6 @@
     },
     "ExtentionDevice3_GPIO_2_4": {
         "type": 0,
-        "val": 0
+        "val": 11
     }
 }

@@ -14,8 +14,8 @@ function StatusBar(props) {
             <h1>Status: </h1>
             <h1>{props.connectionStatus}</h1>
 
-            <h1>Connected devices: </h1>
-            <h1>{props.connectedDevicesIDs}</h1>
+            {/* <h1>Connected devices: </h1>
+            <h1>{props.connectedDevicesIDs}</h1> */}
         </StatusBarWrapper>
     );
 }

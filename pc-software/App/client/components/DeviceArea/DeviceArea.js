@@ -7,13 +7,24 @@ const DeviceAreaWrapper = styled.div `
     border: 1px solid black;
 `;
 
+function createDeviceList(connectedDevices) {
+
+    if(connectedDevices.length == 0) {
+        return <h1>No device connected</h1>
+    }
+    else {
+        let devices = connectedDevices.map((val, i, arr) => {
+            return <Device deviceName={val} key={i}/>
+        });
+    
+        return devices;
+    }
+}
+
 function DeviceArea(props) {
     return (
         <DeviceAreaWrapper>
-            <Device deviceName='MainDevice' key='main'/>
-            <Device deviceName='ExtentionDevice1' key='ext1'/>
-            <Device deviceName='ExtentionDevice2' key='ext2'/>
-            <Device deviceName='ExtentionDevice3' key='ext3'/>
+            {createDeviceList(props.connectedDevices)}
         </DeviceAreaWrapper>
     );
 };

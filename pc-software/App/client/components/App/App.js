@@ -31,46 +31,44 @@ const ApplicationWrapper = styled.div`
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      connectionStatus: 'connected',
-      moduleIDs: [1, 2, 5, 8],
-      moduleTypes: ['GPIO', 'ADC']
-    };
-  }
+        this.state = {
+            connectedDevices: ['MainDevice', 'ExtentionDevice1', 'ExtentionDevice2', 'ExtentionDevice3'],
+        };
+    }
 
-  callBashScript() {
-    fetch("/bash")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          console.log(result);
-        },
-        (error) => {
-          console.log('Failed');
-        }
-      )
-  }
+    callBashScript() {
+        fetch("/bash")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log(result);
+                },
+                (error) => {
+                    console.log('Failed');
+                }
+            )
+    }
 
-  render() {
-    return (
-      <ApplicationWrapper>
-        <StatusBar
-          connectionStatus={this.state.connectionStatus}
-          connectedDevicesIDs={this.state.moduleIDs}
-        />
-        <DeviceArea />
-        <button
-          onClick={() => this.callBashScript()}
-        >
-          run bash script
+    render() {
+        return (
+            <ApplicationWrapper>
+                {/* <StatusBar
+                    connectionStatus={this.state.connectionStatus}
+                    connectedDevicesIDs={this.state.moduleIDs}
+                /> */}
+                <DeviceArea connectedDevices={this.state.connectedDevices} />
+                <button
+                    onClick={() => this.callBashScript()}
+                >
+                    run bash script
         </button>
-      </ApplicationWrapper>
+            </ApplicationWrapper>
 
-    );
-  }
+        );
+    }
 }
 
 export default App;
