@@ -38,13 +38,13 @@ const ChangeTypeButtonWrapper = styled.button `
 
 const ServerValHighWrapper = styled.p `
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     color: #6534ff;
 `;
 
 const ServerValLowWrapper = styled.p `
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     color: #bdbdbd;
 `;
 

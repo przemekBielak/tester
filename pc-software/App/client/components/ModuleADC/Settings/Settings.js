@@ -6,13 +6,12 @@ const SettingsOverlay = styled.div `
     display: block; 
     margin: auto auto;
     padding: 10px 10px;
-    width: 500px; 
+    width: 400px; 
     height: auto; 
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    border: 3px solid green; 
     z-index: 1; 
 `;
 
@@ -20,22 +19,28 @@ const SettingsOverlayContent = styled.div `
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-    background-color: white;
-    border: 3px solid purple; 
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
 `;
 
 const SettingsOverlayHeader = styled.div `
     display: flex;
     justify-content: space-between;
-    border: 1px solid blue;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
 `;
 
 const ModuleLineWrapper = styled.div `
     display: flex;
     justify-content: space-between;
     flex-wrap:nowrap;
-    border: 1px solid green;
-    margin: 2px 0px;
+    padding: 5px 10px ;
+    font-weight: normal;
+    font-size: 16px;
+    height: 30px;
 `;
 
 const ModuleLineBeginningWrapper = styled.div `
@@ -45,6 +50,43 @@ const ModuleLineBeginningWrapper = styled.div `
 
 const ModuleLineNumberWrapper = styled.p `
     width: 35px;
+`;
+
+const ModuleHeadingCloseButton = styled.button `
+    width: 100px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    background-color: #fff;
+    text-align:center;
+    border: none;
+    border-radius: 7px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    outline:none
+`;
+
+const ChangeSpeedButtonWrapper = styled.button `
+    width: 120px;
+    font-weight: normal;
+    color: #000;
+    background-color: #fff;
+    text-align:center;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    outline:none
+`;
+
+const ChangeVoltageButtonWrapper = styled.button `
+    width: 50px;
+    font-weight: normal;
+    color: #000;
+    background-color: #fff;
+    text-align:center;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    outline:none
 `;
 
 
@@ -58,8 +100,8 @@ function createSettingsLines(numOfLines) {
                     <ModuleLineNumberWrapper>{i}.</ModuleLineNumberWrapper>
                 </ModuleLineBeginningWrapper>
                     
-                <button type='text'>SLOW/FAST</button>
-                <button type='text'>3.3V/5V</button>
+                <ChangeSpeedButtonWrapper>SLOW/FAST</ChangeSpeedButtonWrapper>
+                <ChangeVoltageButtonWrapper>3.3V/5V</ChangeVoltageButtonWrapper>
             </ModuleLineWrapper>
         );
     }
@@ -78,11 +120,11 @@ function createSettingsOverlay(settingsActive, hideSettingsHandler, numOfLines) 
                 <SettingsOverlayContent>
                     <SettingsOverlayHeader>
                         <h2>ADC Settings</h2>
-                        <button 
+                        <ModuleHeadingCloseButton 
                             onClick={() => hideSettingsHandler()}
                         >
                             Close
-                        </button>
+                        </ModuleHeadingCloseButton>
                     </SettingsOverlayHeader>
                     {createSettingsLines(numOfLines)}
                 </SettingsOverlayContent>

@@ -6,7 +6,7 @@ const SettingsOverlay = styled.div `
     display: block; 
     margin: auto auto;
     padding: 10px 10px;
-    width: 500px; 
+    width: 400px; 
     height: auto; 
     top: 0;
     left: 0;
@@ -66,7 +66,7 @@ const ModuleHeadingCloseButton = styled.button `
 `;
 
 const ChangePullUpButtonWrapper = styled.button `
-    width: 200px;
+    width: 120px;
     font-weight: normal;
     color: #000;
     background-color: #fff;
@@ -78,7 +78,7 @@ const ChangePullUpButtonWrapper = styled.button `
 `;
 
 const ChangeVoltageButtonWrapper = styled.button `
-    width: 100px;
+    width: 50px;
     font-weight: normal;
     color: #000;
     background-color: #fff;

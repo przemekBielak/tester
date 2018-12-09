@@ -14,11 +14,17 @@ const ModuleLineNumberWrapper = styled.p `
     width: 35px;
 `;
 
+const ServerValWrapper = styled.p `
+    font-weight: bold;
+    font-size: 18px;
+    color: #bdbdbd;
+`;
+
 function Item(props) {
     return (
         <ModuleLineWrapper>
             <ModuleLineNumberWrapper>{props.itemID}.</ModuleLineNumberWrapper>
-            <p>{props.val}</p>
+            <ServerValWrapper>{props.val}</ServerValWrapper>
         </ModuleLineWrapper>
     );
 }

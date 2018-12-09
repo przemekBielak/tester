@@ -7,7 +7,7 @@ class ItemContainer extends Component {
         super(props);
 
         this.state = {
-            val: 0,
+            val: 3.145,
         }
 
         this.ADCdata = {
@@ -22,7 +22,6 @@ class ItemContainer extends Component {
         if(prevState.val !== this.state.val) {
             this.ADCdata.val = this.props.val;
         }
-        console.log(this.ADCdata);
     }
 
     render() {
