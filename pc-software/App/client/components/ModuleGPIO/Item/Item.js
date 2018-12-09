@@ -6,7 +6,8 @@ const ItemWrapper = styled.div `
     justify-content: space-between;
     flex-wrap: nowrap;
     padding: 5px 10px ;
-    // height: 35px;
+    font-weight: normal;
+    font-size: 18px;
 `;
 
 const ItemBeginningWrapper = styled.div `

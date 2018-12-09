@@ -5,6 +5,8 @@ const ModuleHeadingWrapper = styled.div `
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
 `;
 
 function Header(props) {

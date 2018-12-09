@@ -10,6 +10,9 @@ const DeviceWrapper = styled.div `
 
 const DeviceHeaderWrapper = styled.h2 `
     text-align: center;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 35px;
 `;
 
 function createDevice(deviceName) {

@@ -6,6 +6,8 @@ const ModuleLineWrapper = styled.div `
     justify-content: space-between;
     flex-wrap:nowrap;
     padding: 5px 10px ;
+    font-weight: normal;
+    font-size: 18px;
 `;
 
 const ModuleLineNumberWrapper = styled.p `
