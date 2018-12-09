@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const ModuleHeadingWrapper = styled.div `
     display: flex;
     justify-content: space-between;
-    border: 1px solid blue;
+    padding: 10px;
 `;
 
 function Header(props) {

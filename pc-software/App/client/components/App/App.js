@@ -20,12 +20,12 @@ injectGlobal`
 
   body {
     font-family: sans-serif;
+    background-color: #FFFFFF;
   }
 `
 
 const ApplicationWrapper = styled.div`
   padding: 5px;
-  border: 1px solid black;
 `
 
 
@@ -35,22 +35,9 @@ class App extends Component {
         super(props);
 
         this.state = {
-            // connectedDevices: ['MainDevice', 'ExtentionDevice1', 'ExtentionDevice2', 'ExtentionDevice3'],
-            connectedDevices: ['MainDevice'],
+            connectedDevices: ['MainDevice', 'ExtentionDevice1', 'ExtentionDevice2', 'ExtentionDevice3'],
+            // connectedDevices: ['MainDevice'],
         };
-    }
-
-    callBashScript() {
-        fetch("/bash")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    console.log(result);
-                },
-                (error) => {
-                    console.log('Failed');
-                }
-            )
     }
 
     render() {
@@ -61,11 +48,6 @@ class App extends Component {
                     connectedDevicesIDs={this.state.moduleIDs}
                 /> */}
                 <DeviceArea connectedDevices={this.state.connectedDevices} />
-                <button
-                    onClick={() => this.callBashScript()}
-                >
-                    run bash script
-                </button>
             </ApplicationWrapper>
 
         );

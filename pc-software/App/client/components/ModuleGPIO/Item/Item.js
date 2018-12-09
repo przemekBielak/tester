@@ -5,9 +5,8 @@ const ItemWrapper = styled.div `
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
-    border: 1px solid green;
-    margin: 2px 0px;
-    height: 35px;
+    padding: 5px 10px ;
+    // height: 35px;
 `;
 
 const ItemBeginningWrapper = styled.div `

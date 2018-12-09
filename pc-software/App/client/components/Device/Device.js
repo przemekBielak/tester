@@ -4,9 +4,12 @@ import ModuleGPIO from '../ModuleGPIO/ModuleGPIO.js';
 import styled from 'styled-components';
 
 const DeviceWrapper = styled.div `
-    width: 400px;
-    padding: 5px;
-    border: 1px solid red;
+    width: 350px;
+    padding: 30px;
+`;
+
+const DeviceHeaderWrapper = styled.h2 `
+    text-align: center;
 `;
 
 function createDevice(deviceName) {
@@ -55,7 +58,7 @@ function createDevice(deviceName) {
 function Device(props) {
     return (
         <DeviceWrapper>
-            <h2>{props.deviceName}</h2>
+            <DeviceHeaderWrapper>{props.deviceName}</DeviceHeaderWrapper>
             {createDevice(props.deviceName)}
         </DeviceWrapper>
     )
