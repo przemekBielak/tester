@@ -9,15 +9,27 @@ const ModuleHeadingWrapper = styled.div `
     font-size: 20px;
 `;
 
+const ModuleHeadingSettingsButton = styled.button `
+    width: 100px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #bbc4ef;
+    text-align:center;
+    border: none;
+    border-radius: 10px;
+`;
+
+
 function Header(props) {
     return (
         <ModuleHeadingWrapper>
             <h2>GPIO</h2>
-            <button 
+            <ModuleHeadingSettingsButton 
                 onClick={() => props.showSettingsHandler()}
             >
                 Settings
-            </button>
+            </ModuleHeadingSettingsButton>
         </ModuleHeadingWrapper>
     );
 }
