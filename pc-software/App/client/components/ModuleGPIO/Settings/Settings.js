@@ -91,7 +91,7 @@ const ChangeVoltageButtonWrapper = styled.button `
 
 
 
-function createSettingslines(numOfLines) {
+function createSettingslines(numOfLines, pullup, voltage, updateItemPullUpHandler, updateItemVoltageHandler) {
     let table = []
 
     for (let i = 0; i < numOfLines; i++) {
@@ -101,15 +101,30 @@ function createSettingslines(numOfLines) {
                     <ModuleLineNumberWrapper>{i}.</ModuleLineNumberWrapper>
                 </ModuleLineBeginningWrapper>
                 
-                <ChangePullUpButtonWrapper>pull-up/pull-down</ChangePullUpButtonWrapper>
-                <ChangeVoltageButtonWrapper>3.3V/5V</ChangeVoltageButtonWrapper>
+                <ChangePullUpButtonWrapper
+                    onClick={() => updateItemPullUpHandler()}
+                >
+                    {pullup}
+                </ChangePullUpButtonWrapper>
+
+                <ChangeVoltageButtonWrapper
+                    onClick={() => updateItemVoltageHandler()}
+                >
+                    {voltage}
+                </ChangeVoltageButtonWrapper>
             </ModuleLineWrapper>
         );
     }
     return table;
 }
 
-function createSettingsOverlay(settingsActive, hideSettingsHandler, numOfLines) {
+function createSettingsOverlay(settingsActive, 
+                                hideSettingsHandler, 
+                                numOfLines, 
+                                pullup, 
+                                voltage, 
+                                updateItemPullUpHandler, 
+                                updateItemVoltageHandler) {
     if(settingsActive === 0) {
         // return();
     }
@@ -126,7 +141,7 @@ function createSettingsOverlay(settingsActive, hideSettingsHandler, numOfLines) 
                         </ModuleHeadingCloseButton>
                     </SettingsOverlayHeader>
 
-                    {createSettingslines(numOfLines)}
+                    {createSettingslines(numOfLines, pullup, voltage, updateItemPullUpHandler, updateItemVoltageHandler)}
                 </SettingsOverlayContent>
             </SettingsOverlay>
         );
@@ -136,7 +151,13 @@ function createSettingsOverlay(settingsActive, hideSettingsHandler, numOfLines) 
 function Settings(props) {
     return (
         <div>
-            {createSettingsOverlay(props.settingsActive, props.hideSettingsHandler, props.numOfLines)}
+            {createSettingsOverlay(props.settingsActive, 
+                                    props.hideSettingsHandler, 
+                                    props.numOfLines, 
+                                    props.pullup, 
+                                    props.voltage,
+                                    props.updateItemPullUpHandler, 
+                                    props.updateItemVoltageHandler)}
         </div>
     );
 }
