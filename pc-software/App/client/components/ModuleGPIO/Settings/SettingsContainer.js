@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Settings from './Settings.js'
-
+import Settings from './Settings.js';
+import store from '../../../store/store.js';
 
 class SettingsContainer extends Component {
     constructor(props) {
@@ -15,17 +15,22 @@ class SettingsContainer extends Component {
         this.updateItemVoltage = this.updateItemVoltage.bind(this);
     }
 
+    changePullup(val) {
+        return {
+            type: 'CHANGE_GPIO_PULLUP',
+            pullup: val
+        }
+    }
+
     updateItemPullUp() {
-        if(this.state.pullup === 'pull-up') {
-            this.setState({
-                pullup: 'pull-down'
-            });
+        if(store.getState().pullup === 'pull-up') {
+            store.dispatch(this.changePullup('pull-down'))
         }
         else {
-            this.setState({
-                pullup: 'pull-up'
-            });
+            store.dispatch(this.changePullup('pull-up'))
         }
+
+        console.log(store.getState().pullup);
     }
 
     updateItemVoltage() {
@@ -47,7 +52,7 @@ class SettingsContainer extends Component {
                 settingsActive={this.props.settingsActive}
                 hideSettingsHandler={this.props.hideSettingsHandler}
                 numOfLines={this.props.numOfLines}
-                pullup={this.state.pullup}
+                pullup={store.getState().pullup}
                 voltage={this.state.voltage}
                 updateItemPullUpHandler={this.updateItemPullUp}
                 updateItemVoltageHandler={this.updateItemVoltage}
