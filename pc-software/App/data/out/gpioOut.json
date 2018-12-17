@@ -1,22 +1,14 @@
 {
-    "ExtentionDevice3_GPIO_2_0": {
-        "type": 0,
+    "MainDevice_GPIO_1_0": {
+        "type": 1,
+        "val": "1"
+    },
+    "MainDevice_GPIO_1_1": {
+        "type": 1,
         "val": 0
     },
-    "ExtentionDevice3_GPIO_2_1": {
-        "type": 0,
-        "val": 0
-    },
-    "ExtentionDevice3_GPIO_2_2": {
-        "type": 0,
-        "val": 0
-    },
-    "ExtentionDevice3_GPIO_2_3": {
-        "type": 0,
-        "val": 0
-    },
-    "ExtentionDevice3_GPIO_2_4": {
-        "type": 0,
+    "MainDevice_GPIO_1_2": {
+        "type": 1,
         "val": 0
     }
 },
