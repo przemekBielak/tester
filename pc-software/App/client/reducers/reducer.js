@@ -5,6 +5,11 @@ export default (state, action) => {
                 ...state,
                 pullup: action.pullup
             }
+        case 'CHANGE_GPIO_VOLTAGE':
+            return {
+                ...state,
+                voltage: action.voltage
+            }
         default: 
             return state;
     }

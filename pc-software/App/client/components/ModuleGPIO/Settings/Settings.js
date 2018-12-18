@@ -102,13 +102,13 @@ function createSettingslines(numOfLines, pullup, voltage, updateItemPullUpHandle
                 </ModuleLineBeginningWrapper>
                 
                 <ChangePullUpButtonWrapper
-                    onClick={() => updateItemPullUpHandler()}
+                    onClick={() => updateItemPullUpHandler(i)}
                 >
                     {pullup}
                 </ChangePullUpButtonWrapper>
 
                 <ChangeVoltageButtonWrapper
-                    onClick={() => updateItemVoltageHandler()}
+                    onClick={() => updateItemVoltageHandler(i)}
                 >
                     {voltage}
                 </ChangeVoltageButtonWrapper>

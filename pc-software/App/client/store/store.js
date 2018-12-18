@@ -1,7 +1,13 @@
-import {createStore} from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { createLogger } from 'redux-logger';
 import reducer from '../reducers/reducer.js';
 
-const initialState = {pullup: 'pull-up'};
-const store = createStore(reducer, initialState);
+const logger = createLogger();
+
+const initialState = {pullup: 'pull-up', voltage: '5V'};
+const store = createStore(
+    reducer, 
+    initialState, 
+    applyMiddleware(logger));
 
 export default store;

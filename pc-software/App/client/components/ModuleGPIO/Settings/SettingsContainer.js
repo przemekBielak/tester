@@ -7,42 +7,47 @@ class SettingsContainer extends Component {
         super(props);
 
         this.state = {
-            pullup: 'pull-up',
-            voltage: '3,3V',
         }
 
         this.updateItemPullUp = this.updateItemPullUp.bind(this);
         this.updateItemVoltage = this.updateItemVoltage.bind(this);
     }
 
-    changePullup(val) {
+    changePullup(val, itemID) {
         return {
             type: 'CHANGE_GPIO_PULLUP',
+            deviceName: this.props.deviceName,
+            moduleID: this.props.moduleID,
+            itemID: itemID,
             pullup: val
         }
     }
 
-    updateItemPullUp() {
-        if(store.getState().pullup === 'pull-up') {
-            store.dispatch(this.changePullup('pull-down'))
+    changeVoltage(val, itemID) {
+        return {
+            type: 'CHANGE_GPIO_VOLTAGE',
+            deviceName: this.props.deviceName,
+            moduleID: this.props.moduleID,
+            itemID: itemID,
+            voltage: val
         }
-        else {
-            store.dispatch(this.changePullup('pull-up'))
-        }
-
-        console.log(store.getState().pullup);
     }
 
-    updateItemVoltage() {
-        if(this.state.voltage === '3,3V') {
-            this.setState({
-                voltage: '5V'
-            });
+    updateItemPullUp(itemID) {        
+        if(store.getState().pullup === 'pull-up') {
+            store.dispatch(this.changePullup('pull-down', itemID));
         }
         else {
-            this.setState({
-                voltage: '3,3V'
-            });
+            store.dispatch(this.changePullup('pull-up', itemID));
+        }
+    }
+
+    updateItemVoltage(itemID) {
+        if(store.getState().voltage === '3,3V') {
+            store.dispatch(this.changeVoltage('5V', itemID));
+        }
+        else {
+            store.dispatch(this.changeVoltage('3,3V', itemID));
         }
     }
 
@@ -53,7 +58,7 @@ class SettingsContainer extends Component {
                 hideSettingsHandler={this.props.hideSettingsHandler}
                 numOfLines={this.props.numOfLines}
                 pullup={store.getState().pullup}
-                voltage={this.state.voltage}
+                voltage={store.getState().voltage}
                 updateItemPullUpHandler={this.updateItemPullUp}
                 updateItemVoltageHandler={this.updateItemVoltage}
             />
