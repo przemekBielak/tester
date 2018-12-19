@@ -1,43 +1,53 @@
 import React, { Component } from 'react';
-import Settings from './Settings.js'
-
+import Settings from './Settings.js';
+import store from '../../../store/store.js';
 
 class SettingsContainer extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            pullup: 'pull-up',
-            voltage: '3,3V',
         }
 
         this.updateItemPullUp = this.updateItemPullUp.bind(this);
         this.updateItemVoltage = this.updateItemVoltage.bind(this);
     }
 
-    updateItemPullUp() {
-        if(this.state.pullup === 'pull-up') {
-            this.setState({
-                pullup: 'pull-down'
-            });
-        }
-        else {
-            this.setState({
-                pullup: 'pull-up'
-            });
+    changePullup(val, itemID) {
+        return {
+            type: 'CHANGE_GPIO_PULLUP',
+            deviceName: this.props.deviceName,
+            moduleID: this.props.moduleID,
+            itemID: itemID,
+            pullup: val
         }
     }
 
-    updateItemVoltage() {
-        if(this.state.voltage === '3,3V') {
-            this.setState({
-                voltage: '5V'
-            });
+    changeVoltage(val, itemID) {
+        return {
+            type: 'CHANGE_GPIO_VOLTAGE',
+            deviceName: this.props.deviceName,
+            moduleID: this.props.moduleID,
+            itemID: itemID,
+            voltage: val
+        }
+    }
+
+    updateItemPullUp(itemID) {        
+        if(store.getState().pullup === 'pull-up') {
+            store.dispatch(this.changePullup('pull-down', itemID));
         }
         else {
-            this.setState({
-                voltage: '3,3V'
-            });
+            store.dispatch(this.changePullup('pull-up', itemID));
+        }
+    }
+
+    updateItemVoltage(itemID) {
+        if(store.getState().voltage === '3,3V') {
+            store.dispatch(this.changeVoltage('5V', itemID));
+        }
+        else {
+            store.dispatch(this.changeVoltage('3,3V', itemID));
         }
     }
 
@@ -47,8 +57,8 @@ class SettingsContainer extends Component {
                 settingsActive={this.props.settingsActive}
                 hideSettingsHandler={this.props.hideSettingsHandler}
                 numOfLines={this.props.numOfLines}
-                pullup={this.state.pullup}
-                voltage={this.state.voltage}
+                pullup={store.getState().pullup}
+                voltage={store.getState().voltage}
                 updateItemPullUpHandler={this.updateItemPullUp}
                 updateItemVoltageHandler={this.updateItemVoltage}
             />

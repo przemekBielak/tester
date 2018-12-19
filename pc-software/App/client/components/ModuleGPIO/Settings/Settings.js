@@ -12,7 +12,7 @@ const SettingsOverlay = styled.div `
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1; 
+    z-index: 2; 
 `;
 
 const SettingsOverlayContent = styled.div `
@@ -102,13 +102,13 @@ function createSettingslines(numOfLines, pullup, voltage, updateItemPullUpHandle
                 </ModuleLineBeginningWrapper>
                 
                 <ChangePullUpButtonWrapper
-                    onClick={() => updateItemPullUpHandler()}
+                    onClick={() => updateItemPullUpHandler(i)}
                 >
                     {pullup}
                 </ChangePullUpButtonWrapper>
 
                 <ChangeVoltageButtonWrapper
-                    onClick={() => updateItemVoltageHandler()}
+                    onClick={() => updateItemVoltageHandler(i)}
                 >
                     {voltage}
                 </ChangeVoltageButtonWrapper>
