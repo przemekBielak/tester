@@ -61,6 +61,8 @@ class ModuleGPIO extends Component {
                 {this.createItemContainers(this.props.numOfLines, this.props.deviceName, this.props.moduleID)}
 
                 <SettingsContainer 
+                    deviceName={this.props.deviceName} 
+                    moduleID={this.props.moduleID} 
                     settingsActive={this.state.settingsActive}
                     hideSettingsHandler={this.hideSettingsHandler}
                     numOfLines={this.props.numOfLines}
