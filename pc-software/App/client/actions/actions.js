@@ -3,9 +3,7 @@
 export function showSettings(deviceName, moduleID) {
     return {
         type: 'SHOW_SETTINGS',
-        deviceName: deviceName,
-        moduleID: moduleID,
-        settingsVisible: true
+        id: deviceName + '_' + moduleID,
     }
 }
 
@@ -13,9 +11,7 @@ export function showSettings(deviceName, moduleID) {
 export function hideSettings(deviceName, moduleID) {
     return {
         type: 'HIDE_SETTINGS',
-        deviceName: deviceName,
-        moduleID: moduleID,
-        settingsVisible: false
+        id: deviceName + '_' + moduleID,
     }
 }
 

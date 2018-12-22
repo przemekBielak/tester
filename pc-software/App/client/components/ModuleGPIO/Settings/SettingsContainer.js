@@ -32,7 +32,7 @@ class SettingsContainer extends Component {
     render() {
         return (
             <Settings
-                settingsVisible={store.getState().settingsVisible}
+                settingsVisible={store.getState().settingsVisible[this.props.deviceName + '_' + this.props.moduleID]}
                 pullup={store.getState().pullup}
                 voltage={store.getState().voltage}
                 hideSettingsHandler={() => store.dispatch(hideSettings(this.props.deviceName, this.props.moduleID))}

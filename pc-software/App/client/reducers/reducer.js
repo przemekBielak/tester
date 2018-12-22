@@ -13,16 +13,18 @@ export default (state, action) => {
         case 'SHOW_SETTINGS':
             return {
                 ...state,
-                settingsVisible: action.settingsVisible,
-                deviceName: action.deviceName,
-                moduleID: action.moduleID
+                settingsVisible: {
+                    ...state.settingsVisible,
+                    [action.id]: true,
+                }
             }
         case 'HIDE_SETTINGS':
             return {
                 ...state,
-                settingsVisible: action.settingsVisible,
-                deviceName: action.deviceName,
-                moduleID: action.moduleID
+                settingsVisible: {
+                    ...state.settingsVisible,
+                    [action.id]: false,
+                } 
             }
         default: 
             return state;
