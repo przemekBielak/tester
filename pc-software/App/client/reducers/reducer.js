@@ -10,6 +10,16 @@ export default (state, action) => {
                 ...state,
                 voltage: action.voltage
             }
+        case 'SHOW_SETTINGS':
+            return {
+                ...state,
+                settingsVisible: action.settingsVisible
+            }
+        case 'HIDE_SETTINGS':
+            return {
+                ...state,
+                settingsVisible: action.settingsVisible
+            }
         default: 
             return state;
     }

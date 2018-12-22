@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Settings from './Settings.js';
+
 import store from '../../../store/store.js';
+import { changeGPIOPullUp, ChangeGPIOVoltage, hideSettings } from '../../../actions/actions.js';
 
 class SettingsContainer extends Component {
     constructor(props) {
@@ -13,54 +15,34 @@ class SettingsContainer extends Component {
         this.updateItemVoltage = this.updateItemVoltage.bind(this);
     }
 
-    changePullup(val, itemID) {
-        return {
-            type: 'CHANGE_GPIO_PULLUP',
-            deviceName: this.props.deviceName,
-            moduleID: this.props.moduleID,
-            itemID: itemID,
-            pullup: val
-        }
-    }
-
-    changeVoltage(val, itemID) {
-        return {
-            type: 'CHANGE_GPIO_VOLTAGE',
-            deviceName: this.props.deviceName,
-            moduleID: this.props.moduleID,
-            itemID: itemID,
-            voltage: val
-        }
-    }
-
     updateItemPullUp(itemID) {        
         if(store.getState().pullup === 'pull-up') {
-            store.dispatch(this.changePullup('pull-down', itemID));
+            store.dispatch(changeGPIOPullUp(this.props.deviceName, this.props.moduleID, itemID, 'pull-down'));   
         }
         else {
-            store.dispatch(this.changePullup('pull-up', itemID));
+            store.dispatch(changeGPIOPullUp(this.props.deviceName, this.props.moduleID, itemID, 'pull-up'));
         }
     }
 
     updateItemVoltage(itemID) {
         if(store.getState().voltage === '3,3V') {
-            store.dispatch(this.changeVoltage('5V', itemID));
+            store.dispatch(ChangeGPIOVoltage(this.props.deviceName, this.props.moduleID, itemID, '5V'));
         }
         else {
-            store.dispatch(this.changeVoltage('3,3V', itemID));
+            store.dispatch(ChangeGPIOVoltage(this.props.deviceName, this.props.moduleID, itemID, '3.3V'));
         }
     }
 
     render() {
         return (
             <Settings
-                settingsActive={this.props.settingsActive}
-                hideSettingsHandler={this.props.hideSettingsHandler}
-                numOfLines={this.props.numOfLines}
+                settingsActive={store.getState().settingsVisible}
                 pullup={store.getState().pullup}
                 voltage={store.getState().voltage}
+                hideSettingsHandler={() => store.dispatch(hideSettings())}
                 updateItemPullUpHandler={this.updateItemPullUp}
                 updateItemVoltageHandler={this.updateItemVoltage}
+                numOfLines={this.props.numOfLines}
             />
         )
     }

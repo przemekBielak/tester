@@ -5,6 +5,8 @@ import ItemContainer from './Item/ItemContainer.js';
 import SettingsContainer from './Settings/SettingsContainer.js';
 import HeaderContainer from './Header/HeaderContainer.js';
 
+import store from '../../store/store.js';
+
 const ModuleWrapper = styled.div `
     margin-bottom: 10px;
     margin-top: 10px;
@@ -19,19 +21,7 @@ class ModuleGPIO extends Component {
         super(props);
 
         this.state = {
-            settingsActive: 0,
         }
-
-        this.hideSettingsHandler = this.hideSettingsHandler.bind(this);
-        this.showSettingsHandler = this.showSettingsHandler.bind(this);
-    }
-
-    showSettingsHandler() {
-        this.setState({settingsActive: 1});
-    }
-
-    hideSettingsHandler() {
-        this.setState({settingsActive: 0});
     }
 
     createItemContainers(numOfLines, deviceName, moduleID) {
@@ -54,17 +44,13 @@ class ModuleGPIO extends Component {
         return (
             <ModuleWrapper>
                 
-                <HeaderContainer 
-                    showSettingsHandler={this.showSettingsHandler}
-                />
+                <HeaderContainer />
 
                 {this.createItemContainers(this.props.numOfLines, this.props.deviceName, this.props.moduleID)}
 
                 <SettingsContainer 
                     deviceName={this.props.deviceName} 
                     moduleID={this.props.moduleID} 
-                    settingsActive={this.state.settingsActive}
-                    hideSettingsHandler={this.hideSettingsHandler}
                     numOfLines={this.props.numOfLines}
                 />
             
