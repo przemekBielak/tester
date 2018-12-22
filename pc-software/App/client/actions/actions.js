@@ -15,20 +15,16 @@ export function hideSettings(deviceName, moduleID) {
     }
 }
 
-export function changeGPIOPullUp(deviceName, moduleID, itemID, pullup) {
+export function changeGPIOPullUp(deviceName, moduleID, itemID) {
     return {
         type: 'CHANGE_GPIO_PULLUP',
-        deviceName: deviceName,
-        moduleID: moduleID,
-        itemID: itemID,
+        id: deviceName + '_' + moduleID + '_' + itemID,
     }
 }
 
 export function ChangeGPIOVoltage(deviceName, moduleID, itemID) {
     return {
         type: 'CHANGE_GPIO_VOLTAGE',
-        deviceName: deviceName,
-        moduleID: moduleID,
-        itemID: itemID,
+        id: deviceName + '_' + moduleID + '_' + itemID,
     }
 }

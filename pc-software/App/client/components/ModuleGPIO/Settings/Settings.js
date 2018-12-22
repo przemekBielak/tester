@@ -91,30 +91,34 @@ const ChangeVoltageButtonWrapper = styled.button `
 
 
 
-function createSettingslines(numOfLines, pullup, voltage, updateItemPullUpHandler, updateItemVoltageHandler) {
+function createSettingslines(numOfLines, pullup, voltage, updateItemPullUpHandler, updateItemVoltageHandler, deviceName, moduleID) {
 
     // from voltage and pull settings, create strings for the DOM
     let voltageString;
     let pullupString;
-
-    if(voltage === false) {
-        voltageString = '5V';
-    } 
-    else if(voltage === true) {
-        voltageString = '3.3V';
-    }
-
-    if(pullup === false) {
-        pullupString = 'Pull Down';
-    } 
-    else if(pullup === true) {
-        pullupString = 'Pull Up';
-    }
+    let id;
 
     // create all settings lines
     let table = []
 
     for (let i = 0; i < numOfLines; i++) {
+
+        id = deviceName + '_' + moduleID + '_' + i;
+
+        if(pullup[id] === false) {
+            pullupString = 'Pull Down';
+        } 
+        else if(pullup[id] === true) {
+            pullupString = 'Pull Up';
+        }
+
+        if(voltage[id] === false) {
+            voltageString = '5V';
+        } 
+        else if(voltage[id] === true) {
+            voltageString = '3.3V';
+        }
+
         table.push(
             <ModuleLineWrapper key={i}>
                 <ModuleLineBeginningWrapper>
@@ -144,7 +148,9 @@ function createSettingsOverlay(settingsVisible,
                                 pullup, 
                                 voltage, 
                                 updateItemPullUpHandler, 
-                                updateItemVoltageHandler) {
+                                updateItemVoltageHandler, 
+                                deviceName,
+                                moduleID) {
     if(settingsVisible === false) {
         // return();
     }
@@ -161,7 +167,7 @@ function createSettingsOverlay(settingsVisible,
                         </ModuleHeadingCloseButton>
                     </SettingsOverlayHeader>
 
-                    {createSettingslines(numOfLines, pullup, voltage, updateItemPullUpHandler, updateItemVoltageHandler)}
+                    {createSettingslines(numOfLines, pullup, voltage, updateItemPullUpHandler, updateItemVoltageHandler, deviceName, moduleID)}
                 </SettingsOverlayContent>
             </SettingsOverlay>
         );
@@ -177,7 +183,9 @@ function Settings(props) {
                                     props.pullup, 
                                     props.voltage,
                                     props.updateItemPullUpHandler, 
-                                    props.updateItemVoltageHandler)}
+                                    props.updateItemVoltageHandler,
+                                    props.deviceName,
+                                    props.moduleID)}
         </div>
     );
 }

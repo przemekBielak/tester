@@ -39,6 +39,8 @@ class SettingsContainer extends Component {
                 updateItemPullUpHandler={this.updateItemPullUp}
                 updateItemVoltageHandler={this.updateItemVoltage}
                 numOfLines={this.props.numOfLines}
+                deviceName={this.props.deviceName}
+                moduleID={this.props.moduleID}
             />
         )
     }

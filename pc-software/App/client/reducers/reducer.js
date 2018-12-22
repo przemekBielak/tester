@@ -3,12 +3,18 @@ export default (state, action) => {
         case 'CHANGE_GPIO_PULLUP':
             return {
                 ...state,
-                pullup: !state.pullup
+                pullup: {
+                    ...state.pullup,
+                    [action.id]: !state.pullup[action.id]
+                }
             }
         case 'CHANGE_GPIO_VOLTAGE':
             return {
                 ...state,
-                voltage: !state.voltage
+                voltage: {
+                    ...state.voltage,
+                    [action.id]: !state.voltage[action.id]
+                }
             }
         case 'SHOW_SETTINGS':
             return {
