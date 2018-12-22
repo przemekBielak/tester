@@ -3,22 +3,26 @@ export default (state, action) => {
         case 'CHANGE_GPIO_PULLUP':
             return {
                 ...state,
-                pullup: action.pullup
+                pullup: !state.pullup
             }
         case 'CHANGE_GPIO_VOLTAGE':
             return {
                 ...state,
-                voltage: action.voltage
+                voltage: !state.voltage
             }
         case 'SHOW_SETTINGS':
             return {
                 ...state,
-                settingsVisible: action.settingsVisible
+                settingsVisible: action.settingsVisible,
+                deviceName: action.deviceName,
+                moduleID: action.moduleID
             }
         case 'HIDE_SETTINGS':
             return {
                 ...state,
-                settingsVisible: action.settingsVisible
+                settingsVisible: action.settingsVisible,
+                deviceName: action.deviceName,
+                moduleID: action.moduleID
             }
         default: 
             return state;

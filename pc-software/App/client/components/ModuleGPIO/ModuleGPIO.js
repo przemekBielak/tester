@@ -44,7 +44,10 @@ class ModuleGPIO extends Component {
         return (
             <ModuleWrapper>
                 
-                <HeaderContainer />
+                <HeaderContainer 
+                    deviceName={this.props.deviceName} 
+                    moduleID={this.props.moduleID} 
+                />
 
                 {this.createItemContainers(this.props.numOfLines, this.props.deviceName, this.props.moduleID)}
 

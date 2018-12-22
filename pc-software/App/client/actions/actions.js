@@ -1,17 +1,21 @@
 
 // settingsVisible: 1 - visible, 0 - not visible
-export function showSettings() {
+export function showSettings(deviceName, moduleID) {
     return {
         type: 'SHOW_SETTINGS',
-        settingsVisible: 1
+        deviceName: deviceName,
+        moduleID: moduleID,
+        settingsVisible: true
     }
 }
 
 // settingsVisible: 1 - visible, 0 - not visible
-export function hideSettings() {
+export function hideSettings(deviceName, moduleID) {
     return {
         type: 'HIDE_SETTINGS',
-        settingsVisible: 0
+        deviceName: deviceName,
+        moduleID: moduleID,
+        settingsVisible: false
     }
 }
 
@@ -21,16 +25,14 @@ export function changeGPIOPullUp(deviceName, moduleID, itemID, pullup) {
         deviceName: deviceName,
         moduleID: moduleID,
         itemID: itemID,
-        pullup: pullup
     }
 }
 
-export function ChangeGPIOVoltage(deviceName, moduleID, itemID, voltage) {
+export function ChangeGPIOVoltage(deviceName, moduleID, itemID) {
     return {
         type: 'CHANGE_GPIO_VOLTAGE',
         deviceName: deviceName,
         moduleID: moduleID,
         itemID: itemID,
-        voltage: voltage
     }
 }

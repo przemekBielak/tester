@@ -21,32 +21,32 @@ function createDevice(deviceName) {
     if (deviceName === 'MainDevice') {
         table.push(
             <div key={deviceName}>
-                <ModuleGPIO numOfLines={15} deviceName={deviceName} moduleID='1'/>
-                <ModuleADC numOfLines={10} deviceName={deviceName} moduleID='1'/>
+                <ModuleGPIO numOfLines={15} deviceName={deviceName} moduleID='GPIO_1'/>
+                <ModuleADC numOfLines={10} deviceName={deviceName} moduleID='ADC_1'/>
             </div>
         );
     }
     else if (deviceName === 'ExtentionDevice1') {
         table.push(
             <div key={deviceName}>
-                <ModuleGPIO numOfLines={10} deviceName={deviceName} moduleID='1'/>
-                <ModuleADC numOfLines={5} deviceName={deviceName} moduleID='1'/>
+                <ModuleGPIO numOfLines={10} deviceName={deviceName} moduleID='GPIO_1'/>
+                <ModuleADC numOfLines={5} deviceName={deviceName} moduleID='ADC_1'/>
             </div>
         );
     }
     else if (deviceName === 'ExtentionDevice2') {
         table.push(
             <div key={deviceName}>
-                <ModuleADC numOfLines={10} deviceName={deviceName} moduleID='1'/>
-                <ModuleADC numOfLines={10} deviceName={deviceName} moduleID='2'/>
+                <ModuleADC numOfLines={10} deviceName={deviceName} moduleID='ADC_1'/>
+                <ModuleADC numOfLines={10} deviceName={deviceName} moduleID='ADC_2'/>
             </div>
         );
     }
     else if (deviceName === 'ExtentionDevice3') {
         table.push(
             <div key={deviceName}>
-                <ModuleGPIO numOfLines={15} deviceName={deviceName} moduleID='1'/>
-                <ModuleGPIO numOfLines={5} deviceName={deviceName} moduleID='2'/>
+                <ModuleGPIO numOfLines={15} deviceName={deviceName} moduleID='GPIO_1'/>
+                <ModuleGPIO numOfLines={5} deviceName={deviceName} moduleID='GPIO_2'/>
             </div>
         );
     }

@@ -4,7 +4,7 @@ import reducer from '../reducers/reducer.js';
 
 const logger = createLogger();
 
-const initialState = {pullup: 'pull-up', voltage: '5V', settingsVisible: 0};
+const initialState = {pullup: false, voltage: false, settingsVisible: false};
 const store = createStore(
     reducer, 
     initialState, 

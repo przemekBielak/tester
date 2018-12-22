@@ -16,30 +16,26 @@ class SettingsContainer extends Component {
     }
 
     updateItemPullUp(itemID) {        
-        if(store.getState().pullup === 'pull-up') {
-            store.dispatch(changeGPIOPullUp(this.props.deviceName, this.props.moduleID, itemID, 'pull-down'));   
-        }
-        else {
-            store.dispatch(changeGPIOPullUp(this.props.deviceName, this.props.moduleID, itemID, 'pull-up'));
-        }
+        store.dispatch(changeGPIOPullUp(this.props.deviceName, this.props.moduleID, itemID));   
     }
 
     updateItemVoltage(itemID) {
-        if(store.getState().voltage === '3,3V') {
-            store.dispatch(ChangeGPIOVoltage(this.props.deviceName, this.props.moduleID, itemID, '5V'));
-        }
-        else {
-            store.dispatch(ChangeGPIOVoltage(this.props.deviceName, this.props.moduleID, itemID, '3.3V'));
+        store.dispatch(ChangeGPIOVoltage(this.props.deviceName, this.props.moduleID, itemID));
+    }
+
+    checkIfVisible() {
+        if(store.getState().deviceName === deviceName && store.getState().moduleID === moduleID) {
+            return true;
         }
     }
 
     render() {
         return (
             <Settings
-                settingsActive={store.getState().settingsVisible}
+                settingsVisible={store.getState().settingsVisible}
                 pullup={store.getState().pullup}
                 voltage={store.getState().voltage}
-                hideSettingsHandler={() => store.dispatch(hideSettings())}
+                hideSettingsHandler={() => store.dispatch(hideSettings(this.props.deviceName, this.props.moduleID))}
                 updateItemPullUpHandler={this.updateItemPullUp}
                 updateItemVoltageHandler={this.updateItemVoltage}
                 numOfLines={this.props.numOfLines}
