@@ -56,7 +56,7 @@ class ItemContainer extends Component {
         }
 
         var GPIOdata = {
-            id: this.props.deviceName + '_' + this.props.moduleID + '_' +  this.props.itemID,
+            id: this.props.moduleID + '_' +  this.props.itemID,
             type: this.state.type,
             val: this.state.val
         };
@@ -71,7 +71,7 @@ class ItemContainer extends Component {
         var xhr = new XMLHttpRequest();
 
         var url = '/gpio';
-        var params = 'id=' + this.props.deviceName + '_'+ this.props.moduleID + '_' +  this.props.itemID;
+        var params = 'id=' + this.props.moduleID + '_' +  this.props.itemID;
 
         xhr.open('GET', url + '?' + params, true);
         xhr.setRequestHeader('Content-Type', 'application/json');

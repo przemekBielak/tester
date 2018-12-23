@@ -24,13 +24,12 @@ class ModuleGPIO extends Component {
         }
     }
 
-    createItemContainers(numOfLines, deviceName, moduleID) {
+    createItemContainers(numOfLines, moduleID) {
         let table = []
 
         for (let i = 0; i < numOfLines; i++) {
             table.push(
                 <ItemContainer 
-                    deviceName={deviceName} 
                     moduleID={moduleID} 
                     itemID={i} 
                     key={i}
@@ -45,14 +44,12 @@ class ModuleGPIO extends Component {
             <ModuleWrapper>
                 
                 <HeaderContainer 
-                    deviceName={this.props.deviceName} 
                     moduleID={this.props.moduleID} 
                 />
 
-                {this.createItemContainers(this.props.numOfLines, this.props.deviceName, this.props.moduleID)}
+                {this.createItemContainers(this.props.numOfLines, this.props.moduleID)}
 
                 <SettingsContainer 
-                    deviceName={this.props.deviceName} 
                     moduleID={this.props.moduleID} 
                     numOfLines={this.props.numOfLines}
                 />

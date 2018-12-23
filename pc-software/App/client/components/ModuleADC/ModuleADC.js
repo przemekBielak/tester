@@ -36,13 +36,12 @@ class ModuleADC extends Component {
         this.setState({settingsActive: 0});
     }
 
-    createADClines(deviceName, moduleID, numOfLines) {
+    createADClines(moduleID, numOfLines) {
         let table = []
     
         for (let i = 0; i < numOfLines; i++) {
             table.push(
                 <ItemContainer 
-                    deviceName={deviceName} 
                     moduleID={moduleID} 
                     itemID={i} 
                     key={i}
@@ -60,7 +59,7 @@ class ModuleADC extends Component {
                     showSettingsHandler={this.showSettingsHandler}
                 />
 
-                {this.createADClines(this.props.deviceName, this.props.moduleID, this.props.numOfLines)}
+                {this.createADClines(this.props.moduleID, this.props.numOfLines)}
                 
                 <SettingsContainer
                     settingsActive={this.state.settingsActive}

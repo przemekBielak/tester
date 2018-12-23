@@ -16,30 +16,23 @@ class SettingsContainer extends Component {
     }
 
     updateItemPullUp(itemID) {        
-        store.dispatch(changeGPIOPullUp(this.props.deviceName, this.props.moduleID, itemID));   
+        store.dispatch(changeGPIOPullUp(this.props.moduleID, itemID));   
     }
 
     updateItemVoltage(itemID) {
-        store.dispatch(ChangeGPIOVoltage(this.props.deviceName, this.props.moduleID, itemID));
-    }
-
-    checkIfVisible() {
-        if(store.getState().deviceName === deviceName && store.getState().moduleID === moduleID) {
-            return true;
-        }
+        store.dispatch(ChangeGPIOVoltage(this.props.moduleID, itemID));
     }
 
     render() {
         return (
             <Settings
-                settingsVisible={store.getState().settingsVisible[this.props.deviceName + '_' + this.props.moduleID]}
+                settingsVisible={store.getState().settingsVisible[this.props.moduleID]}
                 pullup={store.getState().pullup}
                 voltage={store.getState().voltage}
-                hideSettingsHandler={() => store.dispatch(hideSettings(this.props.deviceName, this.props.moduleID))}
+                hideSettingsHandler={() => store.dispatch(hideSettings(this.props.moduleID))}
                 updateItemPullUpHandler={this.updateItemPullUp}
                 updateItemVoltageHandler={this.updateItemVoltage}
                 numOfLines={this.props.numOfLines}
-                deviceName={this.props.deviceName}
                 moduleID={this.props.moduleID}
             />
         )

@@ -91,7 +91,7 @@ const ChangeVoltageButtonWrapper = styled.button `
 
 
 
-function createSettingslines(numOfLines, pullup, voltage, updateItemPullUpHandler, updateItemVoltageHandler, deviceName, moduleID) {
+function createSettingslines(numOfLines, pullup, voltage, updateItemPullUpHandler, updateItemVoltageHandler, moduleID) {
 
     // from voltage and pull settings, create strings for the DOM
     let voltageString;
@@ -103,7 +103,7 @@ function createSettingslines(numOfLines, pullup, voltage, updateItemPullUpHandle
 
     for (let i = 0; i < numOfLines; i++) {
 
-        id = deviceName + '_' + moduleID + '_' + i;
+        id = moduleID + '_' + i;
 
         if(pullup[id] === false) {
             pullupString = 'Pull Down';
@@ -149,7 +149,6 @@ function createSettingsOverlay(settingsVisible,
                                 voltage, 
                                 updateItemPullUpHandler, 
                                 updateItemVoltageHandler, 
-                                deviceName,
                                 moduleID) {
     if(settingsVisible === false) {
         // return();
@@ -167,7 +166,7 @@ function createSettingsOverlay(settingsVisible,
                         </ModuleHeadingCloseButton>
                     </SettingsOverlayHeader>
 
-                    {createSettingslines(numOfLines, pullup, voltage, updateItemPullUpHandler, updateItemVoltageHandler, deviceName, moduleID)}
+                    {createSettingslines(numOfLines, pullup, voltage, updateItemPullUpHandler, updateItemVoltageHandler, moduleID)}
                 </SettingsOverlayContent>
             </SettingsOverlay>
         );
@@ -184,7 +183,6 @@ function Settings(props) {
                                     props.voltage,
                                     props.updateItemPullUpHandler, 
                                     props.updateItemVoltageHandler,
-                                    props.deviceName,
                                     props.moduleID)}
         </div>
     );

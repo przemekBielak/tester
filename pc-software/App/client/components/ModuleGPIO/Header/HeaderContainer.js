@@ -15,7 +15,7 @@ class HeaderContainer extends Component {
     render() {
         return (
             <Header 
-                showSettingsHandler={() => store.dispatch(showSettings(this.props.deviceName, this.props.moduleID))} 
+                showSettingsHandler={() => store.dispatch(showSettings(this.props.moduleID))} 
             />
         );
     }
