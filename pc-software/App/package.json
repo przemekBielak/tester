@@ -12,6 +12,7 @@
   "author": "Przemek Bielak",
   "license": "ISC",
   "dependencies": {
+    "chart.js": "^2.7.3",
     "express": "^4.16.4",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",

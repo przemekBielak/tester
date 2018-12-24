@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import ItemContainer from './Item/ItemContainer.js';
 import SettingsContainer from './Settings/SettingsContainer.js';
+import GraphContainer from './Graph/GraphContainer.js';
 import HeaderContainer from './Header/HeaderContainer.js';
 
 import store from '../../store/store.js';
@@ -52,6 +53,10 @@ class ModuleGPIO extends Component {
                 <SettingsContainer 
                     moduleID={this.props.moduleID} 
                     numOfLines={this.props.numOfLines}
+                />
+
+                <GraphContainer
+                    moduleID={this.props.moduleID} 
                 />
             
             </ModuleWrapper>

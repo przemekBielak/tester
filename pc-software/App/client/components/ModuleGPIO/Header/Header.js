@@ -32,6 +32,11 @@ function Header(props) {
             >
                 Settings
             </ModuleHeadingSettingsButton>
+            <ModuleHeadingSettingsButton 
+                onClick={() => props.showGraphHandler()}
+            >
+                Graph
+            </ModuleHeadingSettingsButton>
         </ModuleHeadingWrapper>
     );
 }

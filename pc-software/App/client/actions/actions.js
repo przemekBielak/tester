@@ -15,6 +15,21 @@ export function hideSettings(moduleID) {
     }
 }
 
+export function showGraph(moduleID) {
+    return {
+        type: 'SHOW_GRAPH',
+        id: moduleID,
+    }
+}
+
+// settingsVisible: 1 - visible, 0 - not visible
+export function hideGraph(moduleID) {
+    return {
+        type: 'HIDE_GRAPH',
+        id: moduleID,
+    }
+}
+
 export function changeGPIOPullUp(moduleID, itemID) {
     return {
         type: 'CHANGE_GPIO_PULLUP',

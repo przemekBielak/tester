@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Header from './Header.js';
 
 import store from '../../../store/store.js';
-import { showSettings } from '../../../actions/actions.js';
+import { showSettings, showGraph } from '../../../actions/actions.js';
 
 class HeaderContainer extends Component {
     constructor(props) {
@@ -16,6 +16,7 @@ class HeaderContainer extends Component {
         return (
             <Header 
                 showSettingsHandler={() => store.dispatch(showSettings(this.props.moduleID))} 
+                showGraphHandler={() => store.dispatch(showGraph(this.props.moduleID))} 
             />
         );
     }

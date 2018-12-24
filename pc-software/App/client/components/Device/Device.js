@@ -5,12 +5,12 @@ import ModuleCAN from '../ModuleCAN/ModuleCAN.js'
 import styled from 'styled-components';
 
 const MainDeviceWrapper = styled.div `
-    width: 350px;
+    width: 400px;
     padding: 30px;
 `;
 
 const ExtensionDevice1Wrapper = styled.div `
-    width: 350px;
+    width: 400px;
     padding: 30px;
 `;
 
@@ -20,7 +20,7 @@ const ExtensionDevice2Wrapper = styled.div `
 `;
 
 const ExtensionDevice3Wrapper = styled.div `
-    width: 350px;
+    width: 400px;
     padding: 30px;
 `;
 

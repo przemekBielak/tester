@@ -32,6 +32,22 @@ export default (state, action) => {
                     [action.id]: false,
                 } 
             }
+        case 'SHOW_GRAPH':
+            return {
+                ...state,
+                graphVisible: {
+                    ...state.graphVisible,
+                    [action.id]: true,
+                }
+            }
+        case 'HIDE_GRAPH':
+            return {
+                ...state,
+                graphVisible: {
+                    ...state.graphVisible,
+                    [action.id]: false,
+                } 
+            }
         default: 
             return state;
     }

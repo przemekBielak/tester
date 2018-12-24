@@ -110,6 +110,12 @@ const initialState = {
         ExtentionDevice1_GPIO_1: false,
         ExtentionDevice3_GPIO_1: false,
         ExtentionDevice3_GPIO_2: false,
+    },
+    graphVisible: {
+        MainDevice_GPIO_1: false,
+        ExtentionDevice1_GPIO_1: false,
+        ExtentionDevice3_GPIO_1: false,
+        ExtentionDevice3_GPIO_2: false,
     }
 };
 
