@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Line} from 'react-chartjs-2';
 
 const SettingsOverlay = styled.div `
     position: fixed; 
@@ -93,6 +94,27 @@ const ChangeVoltageButtonWrapper = styled.button `
 function createGraphOverlay(graphVisible, 
                                 hideGraphHandler, 
                                 moduleID) {
+
+    let data= {
+        labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+        datasets: [{
+            label: "GPIO sample",
+            borderColor: '#6534ff',
+            cubicInterpolationMode: 'default',
+            lineTension: 0.2,
+            steppedLine: true,
+            data: [1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1],
+        }]
+    }
+
+    let options= {
+        scales: {
+            yAxes: [{
+                stacked: true
+            }]
+        },
+    }
+
     if(graphVisible === false) {
         // return();
     }
@@ -108,6 +130,8 @@ function createGraphOverlay(graphVisible,
                             Close
                         </ModuleHeadingCloseButton>
                     </SettingsOverlayHeader>
+
+                    <Line data={data} options={options} />
                 </SettingsOverlayContent>
             </SettingsOverlay>
         );

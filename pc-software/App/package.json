@@ -15,6 +15,7 @@
     "chart.js": "^2.7.3",
     "express": "^4.16.4",
     "react": "^16.5.2",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.5.2",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
