@@ -7,7 +7,7 @@ const SettingsOverlay = styled.div `
     display: block; 
     margin: auto auto;
     padding: 10px 10px;
-    width: 400px; 
+    width: 700px; 
     height: auto; 
     top: 0;
     left: 0;
@@ -90,20 +90,16 @@ const ChangeVoltageButtonWrapper = styled.button `
     outline:none
 `;
 
-
-function createGraphOverlay(graphVisible, 
-                                hideGraphHandler, 
-                                moduleID) {
-
+function createGraph(xData, yData) {
     let data= {
-        labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+        labels: xData,
         datasets: [{
             label: "GPIO sample",
             borderColor: '#6534ff',
             cubicInterpolationMode: 'default',
             lineTension: 0.2,
             steppedLine: true,
-            data: [1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1],
+            data: yData,
         }]
     }
 
@@ -113,7 +109,21 @@ function createGraphOverlay(graphVisible,
                 stacked: true
             }]
         },
+        animation: {
+            duration: 300, // general animation time
+        },
     }
+
+    return <Line data={data} options={options} />
+}
+
+function createGraphOverlay(graphVisible, 
+                                hideGraphHandler, 
+                                moduleID,
+                                xData, 
+                                yData) {
+
+
 
     if(graphVisible === false) {
         // return();
@@ -131,7 +141,8 @@ function createGraphOverlay(graphVisible,
                         </ModuleHeadingCloseButton>
                     </SettingsOverlayHeader>
 
-                    <Line data={data} options={options} />
+                    {createGraph(xData, yData)}
+
                 </SettingsOverlayContent>
             </SettingsOverlay>
         );
@@ -143,7 +154,9 @@ function Graph(props) {
         <div>
             {createGraphOverlay(props.graphVisible, 
                                     props.hideGraphHandler, 
-                                    props.moduleID)}
+                                    props.moduleID,
+                                    props.xData,
+                                    props.yData)}
         </div>
     );
 }
