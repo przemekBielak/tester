@@ -110,7 +110,7 @@ function createGraph(xData, yData) {
             }]
         },
         animation: {
-            duration: 300, // general animation time
+            duration: 0, // general animation time
         },
     }
 
@@ -157,6 +157,7 @@ function Graph(props) {
                                     props.moduleID,
                                     props.xData,
                                     props.yData)}
+            <h1>{props.update}</h1>
         </div>
     );
 }

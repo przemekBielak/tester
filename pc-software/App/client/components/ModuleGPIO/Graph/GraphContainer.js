@@ -9,15 +9,25 @@ class GraphContainer extends Component {
         super(props);
 
         this.state = {
+            update: false,
         }
 
-        this.timer;
+        this.arrayData=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+        this.increment = 0;
     }
 
     componentDidMount() {
         this.dateTimer = setInterval(() => {
             this.timer = new Date();
-            console.log(this.timer.getTime());
+
+            this.setState({update: !this.state.update});
+
+            this.increment++;
+
+            this.arrayData.pop();
+            this.arrayData.unshift(this.increment);
+
+            console.log(this.arrayData);
         }, 1000);
     }
 
@@ -27,16 +37,15 @@ class GraphContainer extends Component {
 
 
     render() {
-
-        // let rand = Math.floor((Math.random() * 10) + 1); 
-
         return (
             <Graph
                 graphVisible={store.getState().graphVisible[this.props.moduleID]}
                 hideGraphHandler={() => store.dispatch(hideGraph(this.props.moduleID))}
                 moduleID={this.props.moduleID}
                 xData={[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]}
-                yData={[1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1]}
+                yData={this.arrayData}
+                key={Math.random()} 
+                update={this.state.update}
             />
         )
     }
