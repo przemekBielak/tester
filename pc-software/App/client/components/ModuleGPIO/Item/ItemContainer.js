@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Item from './Item.js'
 
+import store from '../../../store/store.js';
+import { showSettings, showGraph } from '../../../actions/actions.js';
+
 const valEnum = {
     LOW: 0,
     HIGH: 1,
@@ -120,6 +123,7 @@ class ItemContainer extends Component {
                 updateItemType={this.updateItemType}
                 updateItemVal={this.updateItemVal}
                 post={this.post}
+                showGraphHandler={() => store.dispatch(showGraph(this.props.moduleID))} 
             />
         );
     }

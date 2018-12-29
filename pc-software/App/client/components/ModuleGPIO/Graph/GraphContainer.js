@@ -27,7 +27,7 @@ class GraphContainer extends Component {
             this.arrayData.pop();
             this.arrayData.unshift(this.increment);
 
-            console.log(this.arrayData);
+            // console.log(this.arrayData);
         }, 1000);
     }
 

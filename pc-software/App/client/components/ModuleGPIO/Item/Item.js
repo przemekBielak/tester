@@ -36,6 +36,19 @@ const ChangeTypeButtonWrapper = styled.button `
     outline:none
 `;
 
+const AddToGraphButtonWrapper = styled.button `
+    width: 50px;
+    font-weight: normal;
+    color: #000;
+    background-color: #fff;
+    text-align:center;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    outline:none
+    margin: 0px 5px
+`;
+
 const ServerValHighWrapper = styled.p `
     font-weight: bold;
     font-size: 18px;
@@ -96,20 +109,48 @@ function itemVal(type, serverVal, val, updateValHandler) {
 }
 
 function Item(props) {
-    return (
-        <ItemWrapper>
-            <ItemBeginningWrapper>
-                <ItemIDWrapper>{props.itemID}.</ItemIDWrapper>
-                <ChangeTypeButtonWrapper 
-                    onClick={() => props.updateItemType()}
-                >
-                    {getKeyByValue(typeEnum, props.type)}
-                </ChangeTypeButtonWrapper>
-            </ItemBeginningWrapper>
 
-            {itemVal(props.type, props.serverVal, props.val, props.updateItemVal)}
-        </ItemWrapper>
-    );
+    // Check if input or output
+    if(props.type === typeEnum.IN) {
+        return (
+            <ItemWrapper>
+                <ItemBeginningWrapper>
+                    <ItemIDWrapper>{props.itemID}.</ItemIDWrapper>
+
+                    <ChangeTypeButtonWrapper 
+                        onClick={() => props.updateItemType()}
+                    >
+                        {getKeyByValue(typeEnum, props.type)}
+                    </ChangeTypeButtonWrapper>
+    
+                    <AddToGraphButtonWrapper 
+                        onClick={() => props.showGraphHandler()}
+                    >
+                        Graph
+                    </AddToGraphButtonWrapper>
+    
+                </ItemBeginningWrapper>
+    
+                {itemVal(props.type, props.serverVal, props.val, props.updateItemVal)}
+            </ItemWrapper>
+        );
+    }
+    else if(props.type === typeEnum.OUT){
+        return (
+            <ItemWrapper>
+                <ItemBeginningWrapper>
+                    <ItemIDWrapper>{props.itemID}.</ItemIDWrapper>
+                    <ChangeTypeButtonWrapper 
+                        onClick={() => props.updateItemType()}
+                    >
+                        {getKeyByValue(typeEnum, props.type)}
+                    </ChangeTypeButtonWrapper>
+                </ItemBeginningWrapper>
+
+                {itemVal(props.type, props.serverVal, props.val, props.updateItemVal)}
+            </ItemWrapper>
+        );
+    }
 }
 
 export default Item;
