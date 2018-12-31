@@ -1,5 +1,5 @@
 import React from 'react';
-import Device from '../Device/Device.js';
+import { MainDevice, ExtentionDevice1, ExtentionDevice2, ExtentionDevice3} from '../Device/Device.js';
 import styled from 'styled-components';
 
 const DeviceAreaWrapper = styled.div `
@@ -13,18 +13,24 @@ function createDeviceList(connectedDevices) {
         return <h1>No device connected</h1>
     }
     else {
-        let devices = connectedDevices.map((val, i, arr) => {
-            return <Device deviceName={val} key={i}/>
-        });
-    
-        return devices;
+        return (
+            <div>
+                <MainDevice deviceName={val}/>
+                <ExtentionDevice1 deviceName={val}/>
+                <ExtentionDevice2 deviceName={val}/>
+                <ExtentionDevice3 deviceName={val}/>
+            </div>
+        )
     }
 }
 
 function DeviceArea(props) {
     return (
         <DeviceAreaWrapper>
-            {createDeviceList(props.connectedDevices)}
+            <MainDevice deviceName={props.connectedDevices[0]}/>
+            <ExtentionDevice1 deviceName={props.connectedDevices[1]}/>
+            <ExtentionDevice2 deviceName={props.connectedDevices[2]}/>
+            <ExtentionDevice3 deviceName={props.connectedDevices[3]}/>        
         </DeviceAreaWrapper>
     );
 };

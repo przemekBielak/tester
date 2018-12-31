@@ -11,7 +11,6 @@ class ItemContainer extends Component {
         }
 
         this.ADCdata = {
-            deviceName: this.props.deviceName,
             moduleID: this.props.moduleID,
             itemID: this.props.itemID,
             val: this.state.val,

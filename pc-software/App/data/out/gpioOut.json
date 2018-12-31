@@ -1,13 +1,9 @@
 {
     "MainDevice_GPIO_1_0": {
         "type": 1,
-        "val": "1"
-    },
-    "MainDevice_GPIO_1_1": {
-        "type": 1,
         "val": 0
     },
-    "MainDevice_GPIO_1_2": {
+    "MainDevice_GPIO_1_5": {
         "type": 1,
         "val": 0
     }

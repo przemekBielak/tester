@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import ItemContainer from './Item/ItemContainer.js';
 import SettingsContainer from './Settings/SettingsContainer.js';
-import GraphContainer from './Graph/GraphContainer.js';
 import HeaderContainer from './Header/HeaderContainer.js';
 
 import store from '../../store/store.js';
@@ -17,7 +16,7 @@ const ModuleWrapper = styled.div `
 `;
 
 
-class ModuleGPIO extends Component {
+class ModuleCAN extends Component {
     constructor(props) {
         super(props);
 
@@ -54,14 +53,10 @@ class ModuleGPIO extends Component {
                     moduleID={this.props.moduleID} 
                     numOfLines={this.props.numOfLines}
                 />
-
-                <GraphContainer
-                    moduleID={this.props.moduleID} 
-                />
             
             </ModuleWrapper>
         );
     }
 }
 
-export default ModuleGPIO;
+export default ModuleCAN;
