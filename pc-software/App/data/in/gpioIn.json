@@ -13,7 +13,7 @@
     },
     "MainDevice_GPIO_1_3": {
         "type": 0,
-        "val": 0
+        "val": 1
     },
     "MainDevice_GPIO_1_4": {
         "type": 0,
@@ -37,7 +37,7 @@
     },
     "MainDevice_GPIO_1_9": {
         "type": 0,
-        "val": 0
+        "val": 1
     },
     "MainDevice_GPIO_1_10": {
         "type": 0,
