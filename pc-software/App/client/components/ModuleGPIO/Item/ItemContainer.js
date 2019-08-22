@@ -14,7 +14,7 @@ const typeEnum = {
     OUT: 1,
 };
 
-const UPDATE_TIME_MS = 100;
+const UPDATE_TIME_MS = 1000;
 
 class ItemContainer extends Component {
     constructor(props) {
@@ -30,22 +30,26 @@ class ItemContainer extends Component {
         this.updateItemType = this.updateItemType.bind(this);
         this.updateItemVal = this.updateItemVal.bind(this);
         this.get = this.get.bind(this);
+
+        this.eventSource = new EventSource("/gpio/stream");
     }
 
-    componentDidMount(prevProps, prevState) {
-        this.timerID = setInterval(() => {
-            this.get();
+    componentDidMount() {
+        // this.eventSource.onmessage = e => this.setState({ serverVal: JSON.parse(e.data).val });
+        this.eventSource.onmessage = e => console.log(e.data)
 
-            // send data to server only when change is needed
-            if(this.state.postUpdatePending === 1) {
-                this.post();
-                this.setState({postUpdatePending: 0});
-            }
-        }, UPDATE_TIME_MS);
+
+        // send data to server only when change is needed
+        if (this.state.postUpdatePending === 1) {
+            this.post();
+            this.setState({ postUpdatePending: 0 });
+        }
+
     }
-    
+
     componentWillUnmount() {
         clearInterval(this.timerID);
+        this.eventSource.close()
     }
 
     post() {
@@ -54,12 +58,12 @@ class ItemContainer extends Component {
         xhr.open('POST', '/gpio', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
 
-        xhr.onload = function() {
+        xhr.onload = function () {
             // nothing to be done
         }
 
         var GPIOdata = {
-            id: this.props.moduleID + '_' +  this.props.itemID,
+            id: this.props.moduleID + '_' + this.props.itemID,
             type: this.state.type,
             val: this.state.val
         };
@@ -74,16 +78,16 @@ class ItemContainer extends Component {
         var xhr = new XMLHttpRequest();
 
         var url = '/gpio';
-        var params = 'id=' + this.props.moduleID + '_' +  this.props.itemID;
+        var params = 'id=' + this.props.moduleID + '_' + this.props.itemID;
 
         xhr.open('GET', url + '?' + params, true);
         xhr.setRequestHeader('Content-Type', 'application/json');
 
         xhr.onreadystatechange = () => {
-            if(xhr.readyState === 4) {
-                if(xhr.status === 200) {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
                     // received input data
-                    this.setState({serverVal: JSON.parse(xhr.responseText).val});
+                    this.setState({ serverVal: JSON.parse(xhr.responseText).val });
                 } else {
                     console.log('err');
                 }
@@ -91,17 +95,17 @@ class ItemContainer extends Component {
         }
         xhr.send(null);
     }
-    
+
     updateItemType() {
-        if(this.state.type === typeEnum.IN) {
-            this.setState({type: typeEnum.OUT});        
+        if (this.state.type === typeEnum.IN) {
+            this.setState({ type: typeEnum.OUT });
         }
         else {
-            this.setState({type: typeEnum.IN});  
+            this.setState({ type: typeEnum.IN });
         }
 
         // new data should be sent to the server, set postUpdatePending flag
-        this.setState({postUpdatePending: 1});
+        this.setState({ postUpdatePending: 1 });
     }
 
     updateItemVal(val) {
@@ -110,20 +114,20 @@ class ItemContainer extends Component {
         });
 
         // new data should be sent to the server, set postUpdatePending flag
-        this.setState({postUpdatePending: 1});
+        this.setState({ postUpdatePending: 1 });
     }
 
     render() {
         return (
-            <Item 
-                itemID={this.props.itemID} 
-                type={this.state.type} 
-                serverVal={this.state.serverVal} 
-                val={this.state.val} 
+            <Item
+                itemID={this.props.itemID}
+                type={this.state.type}
+                serverVal={this.state.serverVal}
+                val={this.state.val}
                 updateItemType={this.updateItemType}
                 updateItemVal={this.updateItemVal}
                 post={this.post}
-                showGraphHandler={() => store.dispatch(showGraph(this.props.moduleID))} 
+                showGraphHandler={() => store.dispatch(showGraph(this.props.moduleID))}
             />
         );
     }
