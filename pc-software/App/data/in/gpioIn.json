@@ -1,11 +1,11 @@
 {
     "MainDevice_GPIO_1_0": {
         "type": 0,
-        "val": 1
+        "val": 0
     },
     "MainDevice_GPIO_1_1": {
         "type": 0,
-        "val": 1
+        "val": 0
     },
     "MainDevice_GPIO_1_2": {
         "type": 0,
@@ -53,7 +53,7 @@
     },
     "MainDevice_GPIO_1_13": {
         "type": 0,
-        "val": 1
+        "val": 0
     },
     "MainDevice_GPIO_1_14": {
         "type": 0,
@@ -61,7 +61,7 @@
     },
     "ExtentionDevice1_GPIO_1_0": {
         "type": 0,
-        "val": 0
+        "val": 1
     },
     "ExtentionDevice1_GPIO_1_1": {
         "type": 0,
@@ -177,6 +177,6 @@
     },
     "ExtentionDevice3_GPIO_2_4": {
         "type": 0,
-        "val": 1
+        "val": 0
     }
 }

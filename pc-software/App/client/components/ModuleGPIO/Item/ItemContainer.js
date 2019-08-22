@@ -30,14 +30,10 @@ class ItemContainer extends Component {
         this.updateItemType = this.updateItemType.bind(this);
         this.updateItemVal = this.updateItemVal.bind(this);
         this.get = this.get.bind(this);
-
-        this.eventSource = new EventSource("/gpio/stream");
     }
 
     componentDidMount() {
         // this.eventSource.onmessage = e => this.setState({ serverVal: JSON.parse(e.data).val });
-        this.eventSource.onmessage = e => console.log(JSON.parse(e.data))
-
 
         // send data to server only when change is needed
         if (this.state.postUpdatePending === 1) {

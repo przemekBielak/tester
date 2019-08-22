@@ -21,8 +21,6 @@ class ModuleGPIO extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-        }
     }
 
     createItemContainers(numOfLines, moduleID) {
