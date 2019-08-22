@@ -36,7 +36,7 @@ class ItemContainer extends Component {
 
     componentDidMount() {
         // this.eventSource.onmessage = e => this.setState({ serverVal: JSON.parse(e.data).val });
-        this.eventSource.onmessage = e => console.log(e.data)
+        this.eventSource.onmessage = e => console.log(JSON.parse(e.data))
 
 
         // send data to server only when change is needed
@@ -105,7 +105,8 @@ class ItemContainer extends Component {
         }
 
         // new data should be sent to the server, set postUpdatePending flag
-        this.setState({ postUpdatePending: 1 });
+        // this.setState({ postUpdatePending: 1 });
+        this.post();
     }
 
     updateItemVal(val) {
@@ -114,7 +115,8 @@ class ItemContainer extends Component {
         });
 
         // new data should be sent to the server, set postUpdatePending flag
-        this.setState({ postUpdatePending: 1 });
+        // this.setState({ postUpdatePending: 1 });
+        this.post();
     }
 
     render() {

@@ -1,6 +1,6 @@
 {
     "MainDevice_GPIO_1_0": {
         "type": 0,
-        "val": 0
+        "val": "1"
     }
 },
