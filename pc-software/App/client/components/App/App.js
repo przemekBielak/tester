@@ -8,9 +8,10 @@ import DeviceArea from '../DeviceArea/DeviceArea.js';
 // Styling
 import styled from 'styled-components';
 import styledNormalize from 'styled-normalize';
-import { injectGlobal } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
-injectGlobal`
+
+const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
   * {
     margin: 0;
@@ -22,7 +23,7 @@ injectGlobal`
     font-family: sans-serif;
     background-color: #FFFFFF;
   }
-`
+`;
 
 const ApplicationWrapper = styled.div`
   padding: 5px;
@@ -43,6 +44,7 @@ class App extends Component {
     render() {
         return (
             <ApplicationWrapper>
+                <GlobalStyle />
                 {/* <StatusBar
                     connectionStatus={this.state.connectionStatus}
                     connectedDevicesIDs={this.state.moduleIDs}
