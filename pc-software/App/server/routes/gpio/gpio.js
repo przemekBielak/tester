@@ -8,7 +8,7 @@ var oldObj = {};
 var newObj = {};
 
 const dataOutPath = './data/out/gpioOut.json';
-const dataInPath = './data/in/gpioIn.json';
+const dataInPath = './data/in/gpio_input.json';
 
 router.post('/', function (req, res) {
     console.log('works')
@@ -37,7 +37,7 @@ router.get('/stream', function (req, res) {
 
         if (newObj != oldObj) {
             res.write('\n')
-            res.write(`data: ${JSON.stringify(newObj)}\n\n`);
+            res.write(`data: ${JSON.stringify(JSON.parse(newObj))}\n\n`);
         }
 
         oldObj = newObj;
@@ -47,14 +47,5 @@ router.get('/stream', function (req, res) {
         clearInterval(intervalId);
     });
 });
-
-
-
-// setTimeout(() => {
-//     res.write({val: inputVal})
-// }, 2000);
-
-
-
 
 module.exports = router;

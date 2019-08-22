@@ -6,9 +6,7 @@ import SettingsContainer from './Settings/SettingsContainer.js';
 import GraphContainer from './Graph/GraphContainer.js';
 import HeaderContainer from './Header/HeaderContainer.js';
 
-import store from '../../store/store.js';
-
-const ModuleWrapper = styled.div `
+const ModuleWrapper = styled.div`
     margin-bottom: 10px;
     margin-top: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -28,10 +26,12 @@ class ModuleGPIO extends Component {
 
         for (let i = 0; i < numOfLines; i++) {
             table.push(
-                <ItemContainer 
-                    moduleID={moduleID} 
-                    itemID={i} 
+                <ItemContainer
+                    moduleID={moduleID}
+                    itemID={i}
                     key={i}
+                    val={this.props.gpioInputModule[i.toString()].val}
+                    type={this.props.gpioInputModule[i.toString()].type}
                 />
             );
         }
@@ -41,22 +41,22 @@ class ModuleGPIO extends Component {
     render() {
         return (
             <ModuleWrapper>
-                
-                <HeaderContainer 
-                    moduleID={this.props.moduleID} 
+
+                <HeaderContainer
+                    moduleID={this.props.moduleID}
                 />
 
                 {this.createItemContainers(this.props.numOfLines, this.props.moduleID)}
 
-                <SettingsContainer 
-                    moduleID={this.props.moduleID} 
+                <SettingsContainer
+                    moduleID={this.props.moduleID}
                     numOfLines={this.props.numOfLines}
                 />
 
                 <GraphContainer
-                    moduleID={this.props.moduleID} 
+                    moduleID={this.props.moduleID}
                 />
-            
+
             </ModuleWrapper>
         );
     }
