@@ -29,7 +29,6 @@ class ItemContainer extends Component {
 
         this.updateItemType = this.updateItemType.bind(this);
         this.updateItemVal = this.updateItemVal.bind(this);
-        // this.get = this.get.bind(this);
     }
 
     componentDidMount() {
@@ -65,52 +64,19 @@ class ItemContainer extends Component {
         xhr.send(JSON.stringify(GPIOdata));
     }
 
-    // Send GET request to server for specific id
-    // Server responds with input data set by linux app
-    // Set item state with received data
-    // get() {
-    //     var xhr = new XMLHttpRequest();
-
-    //     var url = '/gpio';
-    //     var params = 'id=' + this.props.moduleID + '_' + this.props.itemID;
-
-    //     xhr.open('GET', url + '?' + params, true);
-    //     xhr.setRequestHeader('Content-Type', 'application/json');
-
-    //     xhr.onreadystatechange = () => {
-    //         if (xhr.readyState === 4) {
-    //             if (xhr.status === 200) {
-    //                 // received input data
-    //                 this.setState({ serverVal: JSON.parse(xhr.responseText).val });
-    //             } else {
-    //                 console.log('err');
-    //             }
-    //         }
-    //     }
-    //     xhr.send(null);
-    // }
-
     updateItemType() {
         if (this.state.type === typeEnum.IN) {
-            this.setState({ type: typeEnum.OUT });
+            this.setState({ type: typeEnum.OUT }, () => this.post());
         }
         else {
-            this.setState({ type: typeEnum.IN });
+            this.setState({ type: typeEnum.IN }, () => this.post());
         }
-
-        // new data should be sent to the server, set postUpdatePending flag
-        // this.setState({ postUpdatePending: 1 });
-        this.post();
     }
 
     updateItemVal(val) {
         this.setState({
             val: val
-        });
-
-        // new data should be sent to the server, set postUpdatePending flag
-        // this.setState({ postUpdatePending: 1 });
-        this.post();
+        }, () => this.post());
     }
 
     render() {
@@ -122,7 +88,6 @@ class ItemContainer extends Component {
                 val={this.state.val}
                 updateItemType={this.updateItemType}
                 updateItemVal={this.updateItemVal}
-                post={this.post}
                 showGraphHandler={() => store.dispatch(showGraph(this.props.moduleID))}
             />
         );

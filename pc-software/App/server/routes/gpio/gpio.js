@@ -4,15 +4,13 @@ const router = express.Router();
 
 var outObj = {};
 
-var oldObj = {};
-var newObj = {};
+var oldInObj = {};
+var newInObj = {};
 
 const dataOutPath = './data/out/gpioOut.json';
 const dataInPath = './data/in/gpio_input.json';
 
 router.post('/', function (req, res) {
-    console.log('works')
-
     key = req.body.id;
     val = { type: req.body.type, val: req.body.val };
     outObj[key] = val;
@@ -33,14 +31,14 @@ router.get('/stream', function (req, res) {
     });
 
     const intervalId = setInterval(() => {
-        newObj = fs.readFileSync(dataInPath, 'utf8');
+        newInObj = fs.readFileSync(dataInPath, 'utf8');
 
-        if (newObj != oldObj) {
+        if (newInObj != oldInObj) {
             res.write('\n')
-            res.write(`data: ${JSON.stringify(JSON.parse(newObj))}\n\n`);
+            res.write(`data: ${JSON.stringify(JSON.parse(newInObj))}\n\n`);
         }
 
-        oldObj = newObj;
+        oldInObj = newInObj;
     }, 1000)
 
     req.on('close', () => {
