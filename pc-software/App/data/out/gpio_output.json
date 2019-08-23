@@ -1,0 +1,196 @@
+{
+    "MainDevice": {
+        "0": {
+            "0": {
+                "outputVal": "0",
+                "type": 1
+            },
+            "1": {
+                "outputVal": "0",
+                "type": 1
+            },
+            "2": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "3": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "4": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "5": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "6": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "7": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "8": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "9": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "10": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "11": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "12": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "13": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "14": {
+                "outputVal": 0,
+                "type": 0
+            }
+        }
+    },
+    "ExtentionDevice1": {
+        "0": {
+            "0": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "1": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "2": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "3": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "4": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "5": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "6": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "7": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "8": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "9": {
+                "outputVal": 0,
+                "type": 0
+            }
+        }
+    },
+    "ExtentionDevice3": {
+        "0": {
+            "0": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "1": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "2": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "3": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "4": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "5": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "6": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "7": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "8": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "9": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "10": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "11": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "12": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "13": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "14": {
+                "outputVal": 0,
+                "type": 0
+            }
+        },
+        "1": {
+            "0": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "1": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "2": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "3": {
+                "outputVal": 0,
+                "type": 0
+            },
+            "4": {
+                "outputVal": 0,
+                "type": 0
+            }
+        }
+    }
+},

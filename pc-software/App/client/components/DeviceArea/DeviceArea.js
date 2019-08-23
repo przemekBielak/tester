@@ -106,6 +106,10 @@ class DeviceArea extends Component {
         this.eventSource.onmessage = e => this.setState({ gpioInput: JSON.parse(e.data) })
     }
 
+    componentWillUnmount() {
+        this.eventSource.close()
+    }
+
     render() {
         return (
             <DeviceAreaWrapper>

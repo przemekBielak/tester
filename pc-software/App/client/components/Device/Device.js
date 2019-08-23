@@ -36,9 +36,9 @@ const DeviceHeaderWrapper = styled.h2`
 export function MainDevice(props) {
     return (
         <MainDeviceWrapper>
-            <DeviceHeaderWrapper>{props.deviceName}</DeviceHeaderWrapper>
-            <ModuleGPIO numOfLines={15} moduleID={props.deviceName + '_GPIO_1'} gpioInputModule={props.gpioInputDevice['0']} />
-            <ModuleADC numOfLines={10} moduleID={props.deviceName + '_ADC_1'} />
+            <DeviceHeaderWrapper>{"Main Device"}</DeviceHeaderWrapper>
+            <ModuleGPIO numOfLines={15} moduleID={props.deviceName + '_GPIO_0'} gpioInputModule={props.gpioInputDevice['0']} />
+            <ModuleADC numOfLines={10} moduleID={props.deviceName + '_ADC_0'} />
         </MainDeviceWrapper>
     )
 }
@@ -46,9 +46,9 @@ export function MainDevice(props) {
 export function ExtentionDevice1(props) {
     return (
         <ExtensionDevice1Wrapper>
-            <DeviceHeaderWrapper>{props.deviceName}</DeviceHeaderWrapper>
-            <ModuleGPIO numOfLines={10} moduleID={props.deviceName + '_GPIO_1'} gpioInputModule={props.gpioInputDevice['0']} />
-            <ModuleADC numOfLines={5} moduleID={props.deviceName + '_ADC_1'} />
+            <DeviceHeaderWrapper>{"Extension 1"}</DeviceHeaderWrapper>
+            <ModuleGPIO numOfLines={10} moduleID={props.deviceName + '_GPIO_0'} gpioInputModule={props.gpioInputDevice['0']} />
+            <ModuleADC numOfLines={5} moduleID={props.deviceName + '_ADC_0'} />
         </ExtensionDevice1Wrapper>
     )
 }
@@ -56,9 +56,9 @@ export function ExtentionDevice1(props) {
 export function ExtentionDevice2(props) {
     return (
         <ExtensionDevice2Wrapper>
-            <DeviceHeaderWrapper>{props.deviceName}</DeviceHeaderWrapper>
-            <ModuleCAN numOfLines={1} moduleID={props.deviceName + '_CAN_1'} />
-            <ModuleCAN numOfLines={3} moduleID={props.deviceName + '_CAN_2'} />
+            <DeviceHeaderWrapper>{"Extension 2"}</DeviceHeaderWrapper>
+            <ModuleCAN numOfLines={1} moduleID={props.deviceName + '_CAN_0'} />
+            <ModuleCAN numOfLines={3} moduleID={props.deviceName + '_CAN_1'} />
         </ExtensionDevice2Wrapper>
     )
 }
@@ -66,9 +66,9 @@ export function ExtentionDevice2(props) {
 export function ExtentionDevice3(props) {
     return (
         <ExtensionDevice3Wrapper>
-            <DeviceHeaderWrapper>{props.deviceName}</DeviceHeaderWrapper>
-            <ModuleGPIO numOfLines={15} moduleID={props.deviceName + '_GPIO_1'} gpioInputModule={props.gpioInputDevice['0']} />
-            <ModuleGPIO numOfLines={5} moduleID={props.deviceName + '_GPIO_2'} gpioInputModule={props.gpioInputDevice['0']} />
+            <DeviceHeaderWrapper>{"Extension 3"}</DeviceHeaderWrapper>
+            <ModuleGPIO numOfLines={15} moduleID={props.deviceName + '_GPIO_0'} gpioInputModule={props.gpioInputDevice['0']} />
+            <ModuleGPIO numOfLines={5} moduleID={props.deviceName + '_GPIO_1'} gpioInputModule={props.gpioInputDevice['0']} />
         </ExtensionDevice3Wrapper>
     )
 }

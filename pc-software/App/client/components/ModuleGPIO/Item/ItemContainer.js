@@ -14,8 +14,6 @@ const typeEnum = {
     OUT: 1,
 };
 
-const UPDATE_TIME_MS = 1000;
-
 class ItemContainer extends Component {
     constructor(props) {
         super(props);
@@ -24,7 +22,6 @@ class ItemContainer extends Component {
             type: typeEnum.IN,
             val: valEnum.LOW,
             serverVal: valEnum.LOW,
-            postUpdatePending: 0,
         };
 
         this.updateItemType = this.updateItemType.bind(this);
@@ -32,17 +29,7 @@ class ItemContainer extends Component {
     }
 
     componentDidMount() {
-        // send data to server only when change is needed
-        if (this.state.postUpdatePending === 1) {
-            this.post();
-            this.setState({ postUpdatePending: 0 });
-        }
-
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.timerID);
-        this.eventSource.close()
+        this.post();
     }
 
     post() {
@@ -56,7 +43,8 @@ class ItemContainer extends Component {
         }
 
         var GPIOdata = {
-            id: this.props.moduleID + '_' + this.props.itemID,
+            moduleId: this.props.moduleID,
+            itemId: this.props.itemID,
             type: this.state.type,
             val: this.state.val
         };
